@@ -12,14 +12,14 @@ class Comb < ApplicationRecord
     dependent: :destroy
 
 
-    #  not sure which is a better way to do this
-        has_many :pollenCollections,
-        through: :bees,
-        source: :pollenCollections
-    #----------------------
-        # has_many :pollenCollections,
-        # foreign_key: :comb_id,
-        # class_name: :PollenCollection
-    # ------------------------------------------
+#  not sure which is a better way to do this
+    has_many :pollenCollections,
+    through: :bees,
+    source: :pollenCollections
+#----------------------
+    # has_many :pollenCollections,
+    # foreign_key: :comb_id,
+    # class_name: :PollenCollection
+# ------------------------------------------
 
 end
