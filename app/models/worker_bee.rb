@@ -16,8 +16,13 @@ class WorkerBee < ApplicationRecord
 
     def totalPollenCollected
         worker_bee = self
-        worker_bee_id = worker_bee.id
-        
+        sum_of_pollen = PollenCollection.joins("")
 
     end
+
+    #   def search
+    #     search = "%#{params[:query].downcase}%"
+    #     @decks = Deck.joins(:cards).where("lower(decks.title) LIKE ? OR lower(cards.front_text) LIKE ? OR lower(cards.back_text) LIKE ?", search, search, search).select(:id, :title, :author_id).distinct
+    #     render 'api/decks/search'
+    #   end
 end

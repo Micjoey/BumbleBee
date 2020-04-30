@@ -16,6 +16,7 @@ class WorkerBeesController < ApplicationController
 
     def show
         @worker_bee = WorkerBee.find(params[:id])
+        @worker_bee_pollen_sum = PollenCollection.where(bee_id: params[:id]).sum("pollen_glob_collected")
         render :show
     end
 
