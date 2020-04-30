@@ -10,13 +10,13 @@ class WorkerBeesController < ApplicationController
     end
 
     def index
-        @worker_bee = WorkerBee.all
+        @worker_bees = WorkerBee.all
         render :index
     end
 
     def show
         @worker_bee = WorkerBee.find(params[:id])
-        render :index
+        render :show
     end
 
     def update
@@ -27,6 +27,8 @@ class WorkerBeesController < ApplicationController
             render json: @worker_bee.errors.full_messages, status: 406
         end
     end
+
+    
 
     private
 

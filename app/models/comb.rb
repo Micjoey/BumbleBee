@@ -1,6 +1,7 @@
 class Comb < ApplicationRecord
-    validates :bee_id, presence: true
+    validates :sweet_spot, presence: true
 
+    
     has_many :bees,
     foreign_key: :bee_id,
     class_name: :WorkerBee

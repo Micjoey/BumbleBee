@@ -16,33 +16,22 @@ ActiveRecord::Base.transaction do
     require 'faker'
     include Faker
 
-    # i = 1
-    # 40.times do 
-    #    bee = WorkerBee.create(
-    #         bee_name: Faker::Name.first_name,
-    #         pollen_globs: rand(1..30),
-    #         nectar: rand(1..30),
-    #         comb_id: i
-    #     )
-    # i += 1
-    # end
+    
 
-    # x = 1
-    # 40.times do 
-    #    comb = Comb.create(
-    #         bee_id: x-1,
-    #         supervisor_bee_id: x
-    #     )
-    #     SupervisorBee.create(
-    #         bee_id: x,
-    #         comb_id: x
-    #     )
-    # x += 1
-    # end
-
-    # 40.times do
-        
-
-    # end
+    i = 0
+    20.times do 
+        Comb.create(
+            nectar_volume: rand(0..10).ceil,
+            sweet_spot: rand(10..15).ceil
+        )
+        WorkerBee.create(
+            pollen_globs: rand(0..15).ceil,
+            nectar: rand(1..15).ceil,
+            bee_name: "philly",
+            comb_id: i
+        )
+    i += 1
+    end
+    
    
 end

@@ -7,8 +7,10 @@
 </head>
 <body>
     <p>It works!!</p>
-    <% @worker_bee.each do |bee|%>
+    <% @worker_bees.each do |bee|%>
         <li><%= bee.bee_name %></li>
+            <ul><%= bee.pollen_globs %></ul>
+            <ul><%= bee.totalPollenCollected %></ul>
     <%end%>
 </body>
 </html>

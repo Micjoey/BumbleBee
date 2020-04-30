@@ -12,4 +12,12 @@ class WorkerBee < ApplicationRecord
     has_many :pollenCollections,
     foreign_key: :bee_id,
     class_name: :PollenCollection
+
+
+    def totalPollenCollected
+        worker_bee = self
+        worker_bee_id = worker_bee.id
+        
+
+    end
 end

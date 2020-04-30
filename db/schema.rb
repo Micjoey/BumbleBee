@@ -17,11 +17,11 @@ ActiveRecord::Schema.define(version: 2020_04_30_185729) do
 
   create_table "combs", force: :cascade do |t|
     t.integer "nectar_volume"
-    t.integer "bee_id"
+    t.integer "sweet_spot", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["bee_id"], name: "index_combs_on_bee_id"
     t.index ["nectar_volume"], name: "index_combs_on_nectar_volume"
+    t.index ["sweet_spot"], name: "index_combs_on_sweet_spot"
   end
 
   create_table "pollen_collections", force: :cascade do |t|
