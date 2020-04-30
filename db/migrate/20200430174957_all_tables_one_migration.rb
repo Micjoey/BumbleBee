@@ -1,7 +1,7 @@
 class AllTablesOneMigration < ActiveRecord::Migration[5.2]
   def change
     create_table :worker_bees do |t|
-      t.integer "pollen_globs",
+      t.integer "pollen_glob_collected",
       # t.integer "pollen_globs", array: true, default: []
       t.integer "nectar"
       t.string "bee_name"
@@ -31,6 +31,7 @@ class AllTablesOneMigration < ActiveRecord::Migration[5.2]
     end
     add_index :supervisor_bees, :bee_id
     add_index :supervisor_bees, :comb_id
+
 
   end
 end

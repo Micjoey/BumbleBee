@@ -21,6 +21,6 @@ class CombsController < ApplicationController
     private
 
     def comb_params
-        params.require(:comb).permit(:nectar_volume, :bee_id, :supervisor_bee_id)
+        params.require(:comb).permit(:total_nectar_volume, :bee_id, :supervisor_bee_id, :nectar_sweetspot)
     end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_30_174957) do
+ActiveRecord::Schema.define(version: 2020_04_30_185729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(version: 2020_04_30_174957) do
     t.index ["bee_id"], name: "index_combs_on_bee_id"
     t.index ["nectar_volume"], name: "index_combs_on_nectar_volume"
     t.index ["supervisor_bee_id"], name: "index_combs_on_supervisor_bee_id"
+  end
+
+  create_table "pollen_collections", force: :cascade do |t|
+    t.integer "bee_id", null: false
+    t.integer "comb_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "pollen_glob_collected"
+    t.integer "#<ActiveRecord::ConnectionAdapters::PostgreSQL::TableDefinition"
+    t.index ["bee_id"], name: "index_pollen_collections_on_bee_id"
+    t.index ["comb_id"], name: "index_pollen_collections_on_comb_id"
+    t.index ["pollen_glob_collected"], name: "index_pollen_collections_on_pollen_glob_collected"
   end
 
   create_table "supervisor_bees", force: :cascade do |t|
