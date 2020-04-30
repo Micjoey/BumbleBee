@@ -6,7 +6,7 @@ class WorkerBee < ApplicationRecord
     has_many :supervisors,
     foreign_key: :bee_id,
     class_name: :SupervisorBee,
-    dependent: :destory
+    dependent: :destroy
 
     has_many :pollenCollections,
     foreign_key: :bee_id,
