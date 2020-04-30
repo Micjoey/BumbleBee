@@ -5,7 +5,7 @@ class WorkerBeesController < ApplicationController
         if @worker_bee.save
             render :index
         else
-            # render json: @worker_bee.errors.full_messages, status: 406
+            render json: @worker_bee.errors.full_messages, status: 406
         end
     end
 
