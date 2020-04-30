@@ -6,11 +6,17 @@
     <title>Document</title>
 </head>
 <body>
-    <p>It works!!</p>
-    <% @worker_bees.each do |bee|%>
-        <li><%= bee.bee_name %></li>
-            <ul><%= bee.pollen_globs %></ul>
-            <ul><%= bee.totalPollenCollected %></ul>
-    <%end%>
+    <header>Welcome to the Bee Population!</header>
+    <div class="information">
+        <div class="all-bees">
+            <% @worker_bees.each do |bee|%>
+                <li>
+                    <a href=worker_bees/<%=bee.id%>>
+                        <%= bee.bee_name %>
+                    </a>
+                </li>
+            <%end%>
+        </div>
+    </div>
 </body>
 </html>
