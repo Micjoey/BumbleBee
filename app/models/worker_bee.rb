@@ -13,6 +13,17 @@ class WorkerBee < ApplicationRecord
     foreign_key: :bee_id,
     class_name: :PollenCollection
 
+    def supervisor?
+        workerBee = self
+        isSupervisor = !!workerBee.supervisors
+    end
 
+    def individualBeeTotalCollection
+        PollenCollection.where(bee_id: self.id).sum("pollen_glob_collected")
+    end
+
+    def averageTotalBeeCollection
+        PollenCollection.average("pollen_glob_collected")
+    end
     
 end

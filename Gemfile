@@ -20,6 +20,8 @@ gem 'simple_form'
 gem 'title'
 gem 'uglifier'
 
+gem 'daru-view', git: 'https://github.com/SciRuby/daru-view'
+
 gem 'bootsnap'
 gem 'faker'
 gem 'font-awesome-rails'

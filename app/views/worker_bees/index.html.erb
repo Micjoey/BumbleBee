@@ -7,7 +7,13 @@
 </head>
 <body>
     <header>Welcome to the Bee Population!</header>
+
     <div class="information">
+        <div> 
+            <p>The Average Bee Stats:</p>
+            <p>A Bee on average will collect - <%= @worker_bee_averages%> (p/g)</p>
+        
+        </div>
         <div class="all-bees">
             <% @worker_bees.each do |bee|%>
                 <li>

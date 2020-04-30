@@ -19,20 +19,18 @@ ActiveRecord::Base.transaction do
 
     
 
-    i = 0
     20.times do 
         Comb.create(
             nectar_volume: rand(0..10).ceil,
             sweet_spot: rand(10..15).ceil
         )
         WorkerBee.create(
-            pollen_globs: rand(0..15).ceil,
-            nectar: rand(1..15).ceil,
+            pollen_globs: rand(5..17.9),
+            nectar: rand(2..200).ceil, # <---(200..20000) /200 
             bee_name: Faker::Name.first_name,
-            comb_id: i
+            comb_id: rand(20).ceil
         )
         
-    i += 1
     end
 
     x = 0
@@ -51,10 +49,8 @@ ActiveRecord::Base.transaction do
         PollenCollection.create(
             bee_id: rand(20).ceil,
             comb_id: rand(20).floor,
-            pollen_glob_collected: rand(10..15)
+            pollen_glob_collected: rand(5..17.9)
         )
-
-
    end
 
 

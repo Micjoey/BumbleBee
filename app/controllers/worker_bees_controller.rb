@@ -11,12 +11,13 @@ class WorkerBeesController < ApplicationController
 
     def index
         @worker_bees = WorkerBee.all
+        beeDataPoints
         render :index
     end
 
     def show
         @worker_bee = WorkerBee.find(params[:id])
-        @worker_bee_pollen_sum = PollenCollection.where(bee_id: params[:id]).sum("pollen_glob_collected")
+        # beeDataPoints
         render :show
     end
 
@@ -28,6 +29,13 @@ class WorkerBeesController < ApplicationController
             render json: @worker_bee.errors.full_messages, status: 406
         end
     end
+
+    def beeDataPoints
+        @worker_bee_pollen_sum = PollenCollection.where(bee_id: params[:id]).sum("pollen_glob_collected")
+        @worker_bee_averages = PollenCollection.average("pollen_glob_collected")
+    end
+
+    
 
     
 
