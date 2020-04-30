@@ -18,12 +18,10 @@ ActiveRecord::Schema.define(version: 2020_04_30_185729) do
   create_table "combs", force: :cascade do |t|
     t.integer "nectar_volume"
     t.integer "bee_id"
-    t.integer "supervisor_bee_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["bee_id"], name: "index_combs_on_bee_id"
     t.index ["nectar_volume"], name: "index_combs_on_nectar_volume"
-    t.index ["supervisor_bee_id"], name: "index_combs_on_supervisor_bee_id"
   end
 
   create_table "pollen_collections", force: :cascade do |t|

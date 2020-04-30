@@ -1,2 +1,14 @@
 class PollenCollection < ApplicationRecord
+    validates :bee_id, :comb_id, presence: true
+    validates :bee_id, uniqueness: { scope: :comb_id}
+
+    belongs_to :bee,
+    foreign_key: :bee_id,
+    class_name: :WorkerBee
+
+
+    belongs_to :comb,
+    foreign_key: :comb_id,
+    class_name: :Comb
+   
 end

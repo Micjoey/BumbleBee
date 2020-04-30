@@ -1,4 +1,5 @@
 class Comb < ApplicationRecord
+    validates :bee_id, :supervisor_bee_id, presence: true
 
     has_many :bees,
     foreign_key: :bee_id,
@@ -8,4 +9,8 @@ class Comb < ApplicationRecord
     through: :bees,
     source: :supervisors,
     dependent: :destroy
+
+    has_many :pollenCollections,
+    foreign_key: :bee_id,
+    class_name: :PollenCollection
 end
