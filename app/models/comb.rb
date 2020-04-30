@@ -6,6 +6,6 @@ class Comb < ApplicationRecord
 
     has_one :supervisor,
     through: :bees,
-    source: :supervisors
+    source: :supervisors,
     dependent: :destroy
 end
