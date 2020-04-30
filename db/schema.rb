@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20000229210805) do
+ActiveRecord::Schema.define(version: 2020_04_30_174644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "combs", force: :cascade do |t|
+    t.integer "nectar_volume"
+    t.integer "bee_id"
+    t.integer "supervisor_bee_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bee_id"], name: "index_combs_on_bee_id"
+    t.index ["nectar_volume"], name: "index_combs_on_nectar_volume"
+    t.index ["supervisor_bee_id"], name: "index_combs_on_supervisor_bee_id"
+  end
+
+  create_table "supervisor_bees", force: :cascade do |t|
+    t.integer "bee_id", null: false
+    t.integer "comb_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bee_id"], name: "index_supervisor_bees_on_bee_id"
+    t.index ["comb_id"], name: "index_supervisor_bees_on_comb_id"
+  end
 
   create_table "worker_bees", force: :cascade do |t|
     t.datetime "created_at", null: false

@@ -1,0 +1,2 @@
+class SupervisorBee < ApplicationRecord
+end
