@@ -17,7 +17,10 @@
         <p>Total Collection - <%= @worker_bee.individualBeeTotalCollection%></p>
         <p>Supervisor - <%= @worker_bee.supervisor? %></p>
     </div>
-
+    <div>
+        <p>Woot - <%= @worker_bee.allGlobs%></p>
+    
+    </div>
     <div id="container" style="width:100%; height:400px;"></div>
     
     <script>
@@ -73,30 +76,7 @@
     
     </div>
     
-    <div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            current_bee = @worker_bee
-            pollen_collected = rand(5..17.9)
-            nectar_given = rand(2..3)
-            total_nectar = 0
-            nectar_given.times do
-                will_skip = rand(100) <= 10
-                if (!will_skip) 
-                    total_nectar += rand(2..200).ceil
-                end
-            end
-            
-            new_pollen_collection = PollenCollection.new(
-                bee_id: current_bee.id,
-                comb_id: current_bee.comb_id,
-                pollen_glob_collected: pollen_collected
-            )
-        });
     
-    </script>
-    
-    </div>
     
     </div>
 </>
