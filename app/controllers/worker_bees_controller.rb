@@ -27,7 +27,7 @@ class WorkerBeesController < ApplicationController
     end
 
     def edit
-        @worker_bee = WorkerBee.find(params[:id])
+        @worker_bee = WorkerBee.find_by(id: params[:id])
         render :edit
     end
 
