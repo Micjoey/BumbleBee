@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="/js/highstock.js"></script>
-    <script src="/js/highmaps.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -75,10 +73,33 @@
     
     </div>
     
+    <div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            current_bee = @worker_bee
+            pollen_collected = rand(5..17.9)
+            nectar_given = rand(2..3)
+            total_nectar = 0
+            nectar_given.times do
+                will_skip = rand(100) <= 10
+                if (!will_skip) 
+                    total_nectar += rand(2..200).ceil
+                end
+            end
+            
+            new_pollen_collection = PollenCollection.new(
+                bee_id: current_bee.id,
+                comb_id: current_bee.comb_id,
+                pollen_glob_collected: pollen_collected
+            )
+        });
     
+    </script>
     
     </div>
-</div>
+    
+    </div>
+</>
 
 </body>
 </html>
