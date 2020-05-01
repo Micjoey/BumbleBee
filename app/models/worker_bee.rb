@@ -29,20 +29,10 @@ class WorkerBee < ApplicationRecord
     def allGlobs
         current_bee = self
         pollen_collection = PollenCollection.where(bee_id: self.id, comb_id: self.comb_id)
-        pollen_array = pollen_collection.to_a.map{|p| p.pollen_glob_collected}
+        pollen_array = pollen_collection.to_a.map{|p| p}
         
     end
 
-    def trial
-        workerBee = self
-        [
-            workerBee.id,
-            "WB#{workerBee.id}-C#{workerBee.comb_id}",
-             "2-29-20", "100 p/g",
-              "#{workerBee.nectar}",
-            "n/a",
-            "100%"
-        ]
-    end
+    
     
 end

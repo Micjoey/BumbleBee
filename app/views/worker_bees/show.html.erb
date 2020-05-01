@@ -18,7 +18,6 @@
         <p>Supervisor - <%= @worker_bee.supervisor? %></p>
     </div>
     <div>
-        <p>Woot - <%= @worker_bee.allGlobs%></p>
     
     </div>
     <div id="container" style="width:100%; height:400px;"></div>
@@ -51,7 +50,6 @@
                     data: [5, 7, 3]
                 }]
             });
-            
         });
     </script>
     
@@ -66,8 +64,15 @@
                 <th>Advisement</th>
                 <th>% Accepted</th>
             </tr>
-            <% @worker_bee.trial.each do |column, idx| %>
-                <td><%= column%> </td>
+            <% @worker_bee.allGlobs.each do |data, idx| %>
+                <tr>
+                    <td><%=data.bee_id%></td> 
+                    <td><%=data.bee_id%>-C<%=data.comb_id%></td> 
+                    <td><%=data.created_at%></td> 
+                    <td><%=data.pollen_glob_collected%> p/g</td> 
+                    <td><%=data.nectar_consumption%> Units</td> 
+                    <td><%=@worker_bee.nectar%> Units</td>
+                </tr>
             <%end%>
             <tr>
                

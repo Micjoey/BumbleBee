@@ -31,7 +31,7 @@ class WorkerBeesController < ApplicationController
 
     def averageBeeCollection
         # @worker_bee_pollen_sum = PollenCollection.where(bee_id: params[:id]).sum("pollen_glob_collected")
-        @worker_bee_averages = PollenCollection.average("pollen_glob_collected")
+        @worker_bee_averages = PollenCollection.average("pollen_glob_collected").round(2)
     end
 
     
