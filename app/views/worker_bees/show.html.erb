@@ -23,34 +23,57 @@
     <div id="container" style="width:100%; height:400px;"></div>
     
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var myChart = Highcharts.chart('container', {
-            chart: {
-                type: 'bar'
-            },
-            title: {
-                text: 'Fruit Consumption'
-            },
-            xAxis: {
-                categories: ['Apples', 'Bananas', 'Oranges']
-            },
-            yAxis: {
+        document.addEventListener('DOMContentLoaded', function () {
+            let myChart = Highcharts.chart('container', {
+                chart: {
+                    type: 'line'
+                },
                 title: {
-                    text: 'Fruit eaten'
-                }
-            },
-            series: [{
-                name: 'Jane',
-                data: [1, 0, 4]
-            }, {
-                name: 'John',
-                data: [5, 7, 3]
-            }]
+                    text: 'Pollen Collected vs. Nectar Used'
+                },
+                xAxis: {
+                    title: {
+                        text: 'Weeks'
+                    },
+                    categories: ['Week-One', 'Week-Two', 'Week-Three']
+                },
+                yAxis: {
+                    title: {
+                        text: 'Combs'
+                    }
+                },
+                series: [{
+                    name: 'PollenGlobs',
+                    data: [1, 0, 4]
+                }, {
+                    name: 'Nectar',
+                    data: [5, 7, 3]
+                }]
+            });
+            
         });
-    });
     </script>
     
+    <div>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>ID-CombinId</th>
+                <th>Date</th>
+                <th>PollenGlobs</th>
+                <th>Nectar</th>
+                <th>Advisement</th>
+                <th>% Accepted</th>
+            </tr>
+            <% @worker_bee.trial.each do |column, idx| %>
+                <td><%= column%> </td>
+            <%end%>
+            <tr>
+               
+            </tr>
+        </table>
     
+    </div>
     
     
     

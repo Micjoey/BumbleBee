@@ -25,5 +25,17 @@ class WorkerBee < ApplicationRecord
     def averageTotalBeeCollection
         PollenCollection.average("pollen_glob_collected")
     end
+
+    def trial
+        workerBee = self
+        [
+            workerBee.id,
+            "WB#{workerBee.id}-C#{workerBee.comb_id}",
+             "2-29-20", "#{workerBee.pollen_globs} p/g",
+              "#{workerBee.nectar}",
+            "n/a",
+            "100%"
+        ]
+    end
     
 end
