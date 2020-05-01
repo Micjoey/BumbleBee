@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.highcharts.com/highcharts.js"></script>
+    <%= stylesheet_link_tag 'worker_bee.css' %>
     <title>Document</title>
 </head>
 <body>
@@ -14,6 +15,7 @@
     <div>
         <p>Showing a bee named - <%= @worker_bee.bee_name%></p>
         <p>Current Comb - <%= @worker_bee.comb_id%></p>
+        <button onclick=>
         <p>Total Collection - <%= @worker_bee.individualBeeTotalCollection%></p>
         <p>Supervisor - <%= @worker_bee.supervisor? %></p>
     </div>
@@ -23,6 +25,7 @@
     <div id="container" style="width:100%; height:400px;"></div>
     
     <script>
+        
         document.addEventListener('DOMContentLoaded', function () {
             let myChart = Highcharts.chart('container', {
                 chart: {
@@ -52,7 +55,7 @@
             });
         });
     </script>
-    
+    <script src="app/views/worker_bees/format_time.js"></script>
     <div>
         <table>
             <tr>
@@ -66,12 +69,12 @@
             </tr>
             <% @worker_bee.allGlobs.each do |data, idx| %>
                 <tr>
-                    <td><%=data.bee_id%></td> 
-                    <td><%=data.bee_id%>-C<%=data.comb_id%></td> 
-                    <td><%=data.created_at%></td> 
-                    <td><%=data.pollen_glob_collected%> p/g</td> 
-                    <td><%=data.nectar_consumption%> Units</td> 
-                    <td><%=@worker_bee.nectar%> Units</td>
+                    <td class="data-columns"><%=data.bee_id%></td> 
+                    <td class="data-columns"><%=data.bee_id%>-C<%=data.comb_id%></td> 
+                    <td class="data-columns"><%=data.created_at%></td> 
+                    <td class="data-columns"><%=data.pollen_glob_collected%> p/g</td> 
+                    <td class="data-columns"><%=data.nectar_consumption%> Units</td> 
+                    <td class="data-columns"><%=@worker_bee.nectar%> Units</td>
                 </tr>
             <%end%>
             <tr>

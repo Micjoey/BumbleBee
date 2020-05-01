@@ -43,15 +43,43 @@ ActiveRecord::Base.transaction do
     end
     
    
+    
+#    100.times do 
+#     i = 0  
+#     visited = {}
+#         60.times do
+#             bee_id = rand(20.ceil).ceil
+#             visited[bee_id] == 0 ? visited[bee_id] += 1 : visited[bee_id] == 0
+#             if (visited[bee_id] == 10) 
+#                 until visited[bee_id] != 10
+#                     bee_id = rand(20.ceil).ceil
+#                 end
+#             end
 
-   100.times do 
-        PollenCollection.create(
-            bee_id: rand(20).ceil,
-            comb_id: rand(20).floor,
-            nectar_consumption: rand(2..200).floor,
-            pollen_glob_collected: rand(5..17.9)
-        )
-   end
+#             PollenCollection.create(
+#                 bee_id: bee_id,
+#                 comb_id: i,
+#                 nectar_consumption: rand(200..20000).floor,
+#                 pollen_glob_collected: rand(5..17.9)
+#             )
+
+#     i += 1
+#         end 
+#    end
+    i = 0
+    5000.times do
+        if (i == 20)
+            i = 0
+        end
+            id = rand(20).floor
+            PollenCollection.create(
+                bee_id: i,
+                comb_id: id,
+                nectar_consumption: rand(200..20000).floor,
+                pollen_glob_collected: rand(5..17.9)
+            )
+        i += 1
+    end
 
 
 end

@@ -30,7 +30,12 @@ class WorkerBee < ApplicationRecord
         current_bee = self
         pollen_collection = PollenCollection.where(bee_id: self.id, comb_id: self.comb_id)
         pollen_array = pollen_collection.to_a.map{|p| p}
-        
+    end
+
+    def allCombsPartOf
+        current_bee = self
+        pollen_collection = PollenCollection.where(bee_id: self.id, comb_id: self.comb_id)
+        pollen_array = pollen_collection.to_a.map{|p| p.comb_id}
     end
 
     
