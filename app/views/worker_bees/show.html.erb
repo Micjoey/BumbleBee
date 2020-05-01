@@ -1,61 +1,73 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="app/views/worker_bees/format_time.js"></script>
+    
     <%= stylesheet_link_tag 'worker_bee.css' %>
+
+
     <title>Document</title>
+
 </head>
 <body>
 <div>
     <div>
-        <a href="http://localhost:3000/worker_bees">Go Back to all Bees</a>
+        <a href="http://localhost:3001/worker_bees">Go Back to all Bees</a>
     </div>
     <div>
         <p>Showing a bee named - <%= @worker_bee.bee_name%></p>
         <p>Current Comb - <%= @worker_bee.comb_id%></p>
-        <button onclick=>
+        <div>
+            <p> All Combs Part Of <p>
+            <div style="display: flex">
+                <% @worker_bee.allCombsPartOf.each do |comb|%>
+                    <button><%=comb%></button>
+                <%end%>
+            </div>
+            <a href="<%= edit_worker_bee_url(@worker_bee)%>">TESTER</a>
+        </div>
         <p>Total Collection - <%= @worker_bee.individualBeeTotalCollection%></p>
-        <p>Supervisor - <%= @worker_bee.supervisor? %></p>
     </div>
     <div>
-    
+
     </div>
-    <div id="container" style="width:100%; height:400px;"></div>
-    
-    <script>
-        
-        document.addEventListener('DOMContentLoaded', function () {
-            let myChart = Highcharts.chart('container', {
-                chart: {
-                    type: 'line'
-                },
-                title: {
-                    text: 'Pollen Collected vs. Nectar Used'
-                },
-                xAxis: {
-                    title: {
-                        text: 'Weeks'
+    <div id="container" style="width:100%; height:400px;">
+        <script type='text/javascript'>
+            
+            document.addEventListener('DOMContentLoaded', function () {
+                let myChart = Highcharts.chart('container', {
+                    chart: {
+                        type: 'line'
                     },
-                    categories: ['Week-One', 'Week-Two', 'Week-Three']
-                },
-                yAxis: {
                     title: {
-                        text: 'Combs'
-                    }
-                },
-                series: [{
-                    name: 'PollenGlobs',
-                    data: [1, 0, 4]
-                }, {
-                    name: 'Nectar',
-                    data: [5, 7, 3]
-                }]
+                        text: 'Pollen Collected vs. Nectar Used'
+                    },
+                    xAxis: {
+                        title: {
+                            text: 'Weeks'
+                        },
+                        categories: ['Week-One', 'Week-Two', 'Week-Three']
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Combs'
+                        }
+                    },
+                    series: [{
+                        name: 'PollenGlobs',
+                        data: [1, 0, 4]
+                    }, {
+                        name: 'Nectar',
+                        data: [5, 7, 3]
+                    }]
+                });
             });
-        });
     </script>
-    <script src="app/views/worker_bees/format_time.js"></script>
+    </div>
+
     <div>
         <table>
             <tr>

@@ -1,4 +1,7 @@
+require 'action_view'
+
 class WorkerBee < ApplicationRecord
+    include ActionView::Helpers::DateHelper
 
     belongs_to :Comb,
     foreign_key: :bee_id,
@@ -29,15 +32,23 @@ class WorkerBee < ApplicationRecord
     def allGlobs
         current_bee = self
         pollen_collection = PollenCollection.where(bee_id: self.id, comb_id: self.comb_id)
-        pollen_array = pollen_collection.to_a.map{|p| p}
+        @pollen_array = pollen_collection.to_a.map{|p| p}
+        return @pollen_array
     end
 
     def allCombsPartOf
         current_bee = self
-        pollen_collection = PollenCollection.where(bee_id: self.id, comb_id: self.comb_id)
-        pollen_array = pollen_collection.to_a.map{|p| p.comb_id}
+        pollen_collection = PollenCollection.where(bee_id: self.id)
+        pollen_array = pollen_collection.to_a.map{|p| p.comb_id}.uniq().sort()
     end
 
+    def time
+        time_ago_in_words(date_created)
+    end
+
+    def allGlobs2
+        gon.allGlobs = self.allGlobs
+    end
     
     
 end

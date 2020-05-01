@@ -14,15 +14,26 @@ class WorkerBeesController < ApplicationController
         averageBeeCollection
         render :index
     end
-
+    
     def show
+        @worker_bee = WorkerBee.find_by(id: params[:id])
+        if @worker_bee
+            gon.watch.worker_bee = @worker_bee
+            render :show
+        else
+            redirect_to worker_bees_url
+        end
+
+    end
+
+    def edit
         @worker_bee = WorkerBee.find(params[:id])
-        render :show
+        render :edit
     end
 
     def update
         @worker_bee = WorkerBee.find(params[:id])
-        if @worker_bee.update(comb_params)
+        if @worker_bee.update(worker_bee_params)
             render :show
         else
             render json: @worker_bee.errors.full_messages, status: 406
@@ -30,7 +41,6 @@ class WorkerBeesController < ApplicationController
     end
 
     def averageBeeCollection
-        # @worker_bee_pollen_sum = PollenCollection.where(bee_id: params[:id]).sum("pollen_glob_collected")
         @worker_bee_averages = PollenCollection.average("pollen_glob_collected").round(2)
     end
 
