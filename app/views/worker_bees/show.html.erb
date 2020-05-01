@@ -20,14 +20,25 @@
     <div>
         <p>Showing a bee named - <%= @worker_bee.bee_name%></p>
         <p>Current Comb - <%= @worker_bee.comb_id%></p>
-        <div>
-            <p> All Combs Part Of <p>
-            <div style="display: flex">
-                <% @worker_bee.allCombsPartOf.each do |comb|%>
-                    <button><%=comb%></button>
-                <%end%>
-            </div>
-            <a href="<%= edit_worker_bee_url(@worker_bee)%>">TESTER</a>
+        <div class="change-bee-comb">
+            <form  method="POST" action="<%=worker_bee_url(@worker_bee)%>">
+                <input type="hidden" name="_method" value="PATCH">
+
+                <label for="worker-bee-comb">Change Comb </label>
+
+                <select name="worker_bee[comb_id]" id="worker-bee-comb">
+                <option disabled selected>-- select a comb --</option>
+                   <% @worker_bee.allCombsPartOf.each do |comb|%>
+                    <option
+                        <%= @worker_bee.comb_id == comb ? "selected" : "" %>
+                        value="<%= comb %>">
+                        <%= comb %>
+                    </option>
+                    <% end %>
+                </select>
+
+                <input type="submit" value="submit">
+            </form>
         </div>
         <p>Total Collection - <%= @worker_bee.individualBeeTotalCollection%></p>
     </div>
