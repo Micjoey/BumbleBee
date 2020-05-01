@@ -18,23 +18,21 @@ ActiveRecord::Base.transaction do
     include Faker
 
     
-
+    
     20.times do 
         Comb.create(
-            nectar_volume: rand(0..10).ceil,
+            # total_nectar_volume: rand(0..10).ceil,
             sweet_spot: rand(10..15).ceil
         )
         WorkerBee.create(
-            pollen_globs: rand(5..17.9),
-            nectar: rand(2..200).ceil, # <---(200..20000) /200 
+            nectar: rand(200..20000).ceil, # <---(200..20000) /200 
             bee_name: Faker::Name.first_name,
             comb_id: rand(20).ceil
         )
         
     end
-
     x = 0
-   until x == 20 do
+    until x == 20 do
         newBee = SupervisorBee.new(
                 bee_id: rand(0..20).ceil,
                 comb_id: rand(0..20).floor
@@ -42,13 +40,15 @@ ActiveRecord::Base.transaction do
         if (newBee.bee_id != newBee.comb_id && newBee.save )
             x += 1 
         end
-   end
+    end
+    
    
 
    100.times do 
         PollenCollection.create(
             bee_id: rand(20).ceil,
             comb_id: rand(20).floor,
+            nectar_consumption: rand(2..200).floor,
             pollen_glob_collected: rand(5..17.9)
         )
    end

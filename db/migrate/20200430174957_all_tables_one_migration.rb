@@ -1,27 +1,20 @@
 class AllTablesOneMigration < ActiveRecord::Migration[5.2]
   def change
     create_table :worker_bees do |t|
-      t.integer "pollen_glob_collected",
-      # t.integer "pollen_globs", array: true, default: []
       t.integer "nectar"
       t.string "bee_name"
       t.integer "comb_id"
       t.timestamps
     end
-    add_index :worker_bees, :pollen_globs
     add_index :worker_bees, :nectar
     
 
     create_table :combs do |t|
-      t.integer "total_nectar_volume", null: false
-      t.integer "nectar_sweetspot", null: false
+      t.integer "sweet_spot", null: false
       t.integer "bee_id"
-      t.integer "supervisor_bee_id", null: false
       t.timestamps
     end
-    add_index :combs, :nectar_volume
     add_index :combs, :bee_id
-    add_index :combs, :supervisor_bee_id
 
 
     create_table :supervisor_bees do |t|

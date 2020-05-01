@@ -16,17 +16,17 @@ ActiveRecord::Schema.define(version: 2020_04_30_185729) do
   enable_extension "plpgsql"
 
   create_table "combs", force: :cascade do |t|
-    t.integer "nectar_volume"
     t.integer "sweet_spot", null: false
+    t.integer "bee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["nectar_volume"], name: "index_combs_on_nectar_volume"
-    t.index ["sweet_spot"], name: "index_combs_on_sweet_spot"
+    t.index ["bee_id"], name: "index_combs_on_bee_id"
   end
 
   create_table "pollen_collections", force: :cascade do |t|
     t.integer "bee_id", null: false
     t.integer "comb_id", null: false
+    t.integer "nectar_consumption", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "pollen_glob_collected"
@@ -46,14 +46,12 @@ ActiveRecord::Schema.define(version: 2020_04_30_185729) do
   end
 
   create_table "worker_bees", force: :cascade do |t|
-    t.integer "pollen_globs"
     t.integer "nectar"
     t.string "bee_name"
     t.integer "comb_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["nectar"], name: "index_worker_bees_on_nectar"
-    t.index ["pollen_globs"], name: "index_worker_bees_on_pollen_globs"
   end
 
 end

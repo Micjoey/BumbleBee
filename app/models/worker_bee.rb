@@ -31,7 +31,7 @@ class WorkerBee < ApplicationRecord
         [
             workerBee.id,
             "WB#{workerBee.id}-C#{workerBee.comb_id}",
-             "2-29-20", "#{workerBee.pollen_globs} p/g",
+             "2-29-20", "100 p/g",
               "#{workerBee.nectar}",
             "n/a",
             "100%"

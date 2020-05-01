@@ -3,6 +3,7 @@ class CreatePollenCollections < ActiveRecord::Migration[5.2]
     create_table :pollen_collections do |t|
       t.integer "bee_id", null: false
       t.integer "comb_id", null: false
+      t.integer "nectar_consumption", null: false
       t.integer "pollen_glob_collected",
       t.timestamps
     end

@@ -52,9 +52,9 @@ class WorkerBeesController < ApplicationController
             comb_id: current_bee.comb_id,
             pollen_glob_collected: pollen_collected
         )
-        if (new_pollen_collection.save) {
-            render :show
-        }
+        # if (new_pollen_collection.save) {
+        #     render :show
+        # }
 
     end
     
