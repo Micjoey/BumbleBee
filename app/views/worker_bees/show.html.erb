@@ -60,7 +60,7 @@
                 <tr>
                     <td class="data-columns"><%=data.bee_id%></td> 
                     <td class="data-columns"><%=data.bee_id%>-C<%=data.comb_id%></td> 
-                    <td class="data-columns"><%=data.created_at%></td> 
+                    <td class="data-columns"><%=data.created_at.to_s.split(" ")[0]%></td> 
                     <td class="data-columns"><%=data.pollen_glob_collected%> p/g</td> 
                     <td class="data-columns"><%=data.nectar_consumption%> Units</td> 
                     <td class="data-columns"><%=@worker_bee.nectar%> Units</td>
