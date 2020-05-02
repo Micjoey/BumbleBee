@@ -59,9 +59,5 @@ class WorkerBee < ApplicationRecord
     end
 
 
-    def allGlobs2
-        gon.allGlobs = self.allGlobs
-    end
-    
     
 end
