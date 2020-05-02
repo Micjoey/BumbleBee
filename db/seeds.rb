@@ -85,12 +85,23 @@ ActiveRecord::Base.transaction do
                 advisement_sum_last_three_weeks = PollenCollection
                                         .where(bee_id: id, comb_id: i)
                                         .map{|a| a.pollen_glob_collected}
-                                        .slice(advisement_array.length-3, advisement_array.length)
+                advisement_sum_last_three_weeks.slice(advisement_sum_last_three_weeks.length-3, advisement_sum_last_three_weeks.length)
                                         
-                adivisment_average = advisement_sum_last_three_weeks.sum{|s| s} / advisement_sum_last_three_weeks.length
-                if (adivisment_average < current_comb)
+                pollen_average = advisement_sum_last_three_weeks.sum{|s| s} / advisement_sum_last_three_weeks.length
+                nectar_sum_last_three_weeks = PollenCollection
+                                        .where(bee_id: id, comb_id: i)
+                                        .map{|a| a.nectar_consumption}
+                nectar_sum_last_three_weeks.slice(nectar_sum_last_three_weeks.length-3, nectar_sum_last_three_weeks.length)
+                nectar_average = nectar_sum_last_three_weeks.sum{|s| s} / nectar_sum_last_three_weeks.length
 
-                advisement_accepted = ["Yes", "No"].sample
+                if (pollen_average < current_comb.sweet_spot && nectar_average < current_bee_nectar)
+                    advisement += ((1-(pollen_average/current_comb.sweet_spot)) * PollenCollection
+                                        .where(bee_id: id, comb_id: i)
+                                        .map{|a| a.advisement}.last)
+                    advisement_accepted = "Yes"
+                else
+                    advisement_accepted = "no"
+                end
             else
                 advisement_accepted = "n/a"
             end
@@ -99,8 +110,8 @@ ActiveRecord::Base.transaction do
                 comb_id: id,
                 nectar_consumption: nectar_consumption,
                 pollen_glob_collected: pollen_gathered,
-                advisement: current_bee_nectar,
-                advisement_accepted: advisement
+                advisement: advisement,
+                advisement_accepted: advisement_accepted
             )
         i += 1
     end

@@ -30,7 +30,9 @@ ActiveRecord::Schema.define(version: 2020_05_02_184648) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "pollen_glob_collected"
-    t.string "advisement"
+    t.integer "#<ActiveRecord::ConnectionAdapters::PostgreSQL::TableDefinition"
+    t.integer "advisement"
+    t.string "advisement_accepted"
     t.index ["bee_id"], name: "index_pollen_collections_on_bee_id"
     t.index ["comb_id"], name: "index_pollen_collections_on_comb_id"
     t.index ["pollen_glob_collected"], name: "index_pollen_collections_on_pollen_glob_collected"
