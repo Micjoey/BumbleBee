@@ -1,10 +1,13 @@
 <div id="worker-bee-pollen" style="display: none"><%= @worker_bee.pollenCollected%></div>
 <div id="worker-bee-nectar" style="display: none"><%= @worker_bee.nectarUsed%></div>        
+<div id="worker-bee-temp" style="display: none"><%= @worker_bee.temp%></div>        
      
 <script type='text/javascript'>
     document.addEventListener('DOMContentLoaded', function () {
         let pollenCollected = JSON.parse(document.getElementById('worker-bee-pollen').innerHTML)
         let nectarUsed = JSON.parse(document.getElementById('worker-bee-nectar').innerHTML)
+        let temp = document.getElementById('worker-bee-temp').innerHTML
+        console.log(temp)
         let weeks = new Array(Math.max(pollenCollected.length, nectarUsed.length))
         for(let x = 0; x <weeks.length; x++) {
             weeks[x] = `week-${x}`

@@ -46,16 +46,25 @@ ActiveRecord::Base.transaction do
     
     i = 0
     5000.times do
-        if (i == 20)
+        if (i == 21)
             i = 0
         end
             id = rand(20).floor
             current_bee = WorkerBee.find_by(id: i)
+            nectar_consumption = rand(200..20000).floor
+            pollen_glob_collected = rand(5..17.9)
+            
+            if (i % 3 == 0) 
+                advisement = ["Yes", "No"].sample
+            else
+                advisement = "n/a"
+            end
             PollenCollection.create(
                 bee_id: i,
                 comb_id: id,
                 nectar_consumption: rand(200..20000).floor,
-                pollen_glob_collected: rand(5..17.9)
+                pollen_glob_collected: rand(5..17.9),
+                advisement: advisement
             )
         i += 1
     end

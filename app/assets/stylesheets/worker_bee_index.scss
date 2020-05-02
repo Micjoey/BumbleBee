@@ -23,12 +23,13 @@ header {
         .all-bees {
             h1 {
                 display: flex;
-                justify-content: center;
+                // justify-content: center;
+                padding: 1em;
             }
         }
             .list-of-bees{
                 display: block;
-                align-items: center;
+                align-items: left;
             }
                 .grid-list-of-bees {
                     // display: flex;
@@ -59,7 +60,6 @@ header {
                             .individual-bee-info-link:hover {
                                 background-color: rgba(255, 166, 0, 0.269);
                                 cursor: pointer;
-                                font-weight: bold;
                             }
             
         

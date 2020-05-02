@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_30_185729) do
+ActiveRecord::Schema.define(version: 2020_05_02_184648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2020_04_30_185729) do
     t.datetime "updated_at", null: false
     t.integer "pollen_glob_collected"
     t.integer "#<ActiveRecord::ConnectionAdapters::PostgreSQL::TableDefinition"
+    t.string "advisement"
     t.index ["bee_id"], name: "index_pollen_collections_on_bee_id"
     t.index ["comb_id"], name: "index_pollen_collections_on_comb_id"
     t.index ["pollen_glob_collected"], name: "index_pollen_collections_on_pollen_glob_collected"
