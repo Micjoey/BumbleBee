@@ -11,11 +11,10 @@ class Comb < ApplicationRecord
     source: :supervisors,
     dependent: :destroy
 
-
 #  not sure which is a better way to do this
-    has_many :pollenCollections,
+    has_many :pollen_collections,
     through: :bees,
-    source: :pollenCollections
+    source: :pollen_collections
 #----------------------
     # has_many :pollenCollections,
     # foreign_key: :comb_id,

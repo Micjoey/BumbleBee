@@ -6,7 +6,7 @@ class SupervisorBee < ApplicationRecord
     foreign_key: :comb_id,
     class_name: :Comb
 
-    belongs_to :workerbee,
+    belongs_to :worker_bee,
     foreign_key: :bee_id,
     class_name: :WorkerBee
 

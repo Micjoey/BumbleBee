@@ -13,33 +13,33 @@ class WorkerBee < ApplicationRecord
     class_name: :SupervisorBee,
     dependent: :destroy
 
-    has_many :pollenCollections,
+    has_many :pollen_collections,
     foreign_key: :bee_id,
     class_name: :PollenCollection
 
-    def isSupervisor?
+    def is_supervisor?
         workerbee = self
         supervisor_of = workerbee.supervisors.ids
         answer =supervisor_of.include?(workerbee.comb_id)
         [answer, supervisor_of]
     end
 
-    def individualBeeTotalCollection
+    def individual_bee_total_collection
         PollenCollection.where(bee_id: self.id).sum("pollen_glob_collected")
     end
 
-    def averageTotalBeeCollection
+    def average_total_bee_collection
         PollenCollection.average("pollen_glob_collected")
     end
 
-    def allInformationOnBee
+    def all_information_on_bee
         current_bee = self
         pollen_collection = PollenCollection.where(bee_id: self.id, comb_id: self.comb_id)
         @pollen_array = pollen_collection.to_a.map{|p| p}
         return @pollen_array
     end
 
-    def pollenCollected
+    def pollen_collected
         current_bee = self
         pollen_collection = PollenCollection.where(bee_id: self.id, comb_id: self.comb_id)
         @pollen_array = pollen_collection.to_a.map{|p| p.pollen_glob_collected}
@@ -50,17 +50,17 @@ class WorkerBee < ApplicationRecord
         @temp = [self.id, self.comb_id]
     end
 
-    def nectarUsed
+    def nectar_used
         current_bee = self
         pollen_collection = PollenCollection.where(bee_id: self.id, comb_id: self.comb_id)
         @nectar_array = pollen_collection.to_a.map{|p| p.nectar_consumption}
     end
 
-    def targetPollen
+    def target_pollen
         sweet_spot = Comb.where(id: self.comb_id).to_a.map{|p| p.sweet_spot}[0]
     end
 
-    def allCombsPartOf
+    def all_combs_part_of
         current_bee = self
         pollen_collection = PollenCollection.where(bee_id: self.id)
         pollen_array = pollen_collection.to_a.map{|p| p.comb_id}.uniq().sort()

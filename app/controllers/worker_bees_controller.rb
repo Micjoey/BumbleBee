@@ -11,7 +11,7 @@ class WorkerBeesController < ApplicationController
 
     def index
         @worker_bees = WorkerBee.all
-        averageBeeCollection
+        average_bee_collection
         render :index
     end
     
@@ -40,7 +40,7 @@ class WorkerBeesController < ApplicationController
         end
     end
 
-    def averageBeeCollection
+    def average_bee_collection
         @worker_bee_averages = PollenCollection.average("pollen_glob_collected").round(2)
     end
 

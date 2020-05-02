@@ -1,26 +1,26 @@
 
 class PollenCollectionsController < ApplicationController
     def create
-        @pollencollection = PollenCollection.new(pollen_collection_params)
-        if @pollencollection.save
-            @worker_bee = WorkerBee.find(@pollencollection.bee_id)
+        @pollen_collection = PollenCollection.new(pollen_collection_params)
+        if @pollen_collection.save
+            @worker_bee = WorkerBee.find(@pollen_collection.bee_id)
         else
-            render json: @pollencollection.errors.full_messages, status: 406
+            render json: @pollen_collection.errors.full_messages, status: 406
         end
     end
 
     # def show
-    #     @pollencollection = @pollencollection.find(params[:bee_id])
+    #     @pollen_collection = @pollen_collection.find(params[:bee_id])
     # end
     
 
     def destroy
-        @pollencollection = PollenCollection.find(params[:id])
-        if @pollencollection.destroy
-            @worker_bee = WorkerBee.find(@pollencollection.bee_id)
+        @pollen_collection = PollenCollection.find(params[:id])
+        if @pollen_collection.destroy
+            @worker_bee = WorkerBee.find(@pollen_collection.bee_id)
             render :show
         else
-            render json: @pollencollection.errors.full_messages, status: 406
+            render json: @pollen_collection.errors.full_messages, status: 406
         end
     end
 
