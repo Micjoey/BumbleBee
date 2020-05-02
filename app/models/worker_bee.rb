@@ -31,7 +31,7 @@ class WorkerBee < ApplicationRecord
         PollenCollection.average("pollen_glob_collected")
     end
 
-    def allGlobs
+    def allInformationOnBee
         current_bee = self
         pollen_collection = PollenCollection.where(bee_id: self.id, comb_id: self.comb_id)
         @pollen_array = pollen_collection.to_a.map{|p| p}
@@ -50,7 +50,9 @@ class WorkerBee < ApplicationRecord
         @nectar_array = pollen_collection.to_a.map{|p| p.nectar_consumption}
     end
 
-    
+    def targetPollen
+        sweet_spot = Comb.where(id: self.comb_id).to_a.map{|p| p.sweet_spot}[0]
+    end
 
     def allCombsPartOf
         current_bee = self

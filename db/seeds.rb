@@ -50,6 +50,7 @@ ActiveRecord::Base.transaction do
             i = 0
         end
             id = rand(20).floor
+            current_bee = WorkerBee.find_by(id: i)
             PollenCollection.create(
                 bee_id: i,
                 comb_id: id,
