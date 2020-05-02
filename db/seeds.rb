@@ -50,6 +50,7 @@ ActiveRecord::Base.transaction do
             i = 0
         end
             id = rand(20).floor
+            current_comb = Comb.find_by(id: id)
             current_bee = WorkerBee.find_by(id: i)
             if (current_bee)
                 current_bee_nectar = current_bee.nectar
@@ -81,16 +82,25 @@ ActiveRecord::Base.transaction do
             end
             
             if (i % 3 == 0) 
-                advisement = ["Yes", "No"].sample
+                advisement_sum_last_three_weeks = PollenCollection
+                                        .where(bee_id: id, comb_id: i)
+                                        .map{|a| a.pollen_glob_collected}
+                                        .slice(advisement_array.length-3, advisement_array.length)
+                                        
+                adivisment_average = advisement_sum_last_three_weeks.sum{|s| s} / advisement_sum_last_three_weeks.length
+                if (adivisment_average < current_comb)
+
+                advisement_accepted = ["Yes", "No"].sample
             else
-                advisement = "n/a"
+                advisement_accepted = "n/a"
             end
             PollenCollection.create(
                 bee_id: i,
                 comb_id: id,
                 nectar_consumption: nectar_consumption,
                 pollen_glob_collected: pollen_gathered,
-                advisement: advisement
+                advisement: current_bee_nectar,
+                advisement_accepted: advisement
             )
         i += 1
     end
