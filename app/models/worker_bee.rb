@@ -36,6 +36,19 @@ class WorkerBee < ApplicationRecord
         return @pollen_array
     end
 
+    def pollenCollected
+        current_bee = self
+        pollen_collection = PollenCollection.where(bee_id: self.id, comb_id: self.comb_id)
+        @pollen_array = pollen_collection.to_a.map{|p| p.pollen_glob_collected}
+    end
+    def nectarUsed
+        current_bee = self
+        pollen_collection = PollenCollection.where(bee_id: self.id, comb_id: self.comb_id)
+        @pollen_array = pollen_collection.to_a.map{|p| p.nectar_consumption}
+    end
+
+    
+
     def allCombsPartOf
         current_bee = self
         pollen_collection = PollenCollection.where(bee_id: self.id)

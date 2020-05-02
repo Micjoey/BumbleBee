@@ -1,13 +1,17 @@
+<form  method="POST" action="<%=worker_bee_url(@worker_bee)%>">
+    <input type="hidden" name="_method" value="PATCH">
 
+    <label for="worker-bee-comb">Change Comb </label>
 
-
-<form  method="POST" action="<%=worker_bee_url(worker_bee)%>">
-  <input type="hidden" name="_method" value="PATCH">
-  <label for="worker_bee">Change Comb</label>
-  <input
-    type="text"
-    name="worker_bee[comb_id]"
-    id="worker_bee"
-    value="<%= worker_bee.comb_id %>">
-  <input type="submit" value="submit">
+    <select name="worker_bee[comb_id]" id="worker-bee-comb">
+    <option disabled selected>-- select a comb --</option>
+        <% @worker_bee.allCombsPartOf.each do |comb|%>
+        <option
+            <%= @worker_bee.comb_id == comb ? "selected" : "" %>
+            value="<%= comb %>">
+            <%= comb %>
+        </option>
+        <% end %>
+    </select>
+    <input type="submit" value="submit">
 </form>

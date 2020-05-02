@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="app/views/worker_bees/format_time.js"></script>
     
     <%= stylesheet_link_tag 'worker_bee.css' %>
@@ -36,7 +35,6 @@
                     </option>
                     <% end %>
                 </select>
-
                 <input type="submit" value="submit">
             </form>
         </div>
@@ -45,34 +43,35 @@
     <div>
 
     </div>
+    <div id="worker-bee-pollen" style="display"><%= @worker_bee.pollenCollected%></div>
+    <div id="worker-bee-nectar" style="display"><%= @worker_bee.nectarUsed%></div>
     <div id="container" style="width:100%; height:400px;">
         <script type='text/javascript'>
-            
             document.addEventListener('DOMContentLoaded', function () {
+                let pollencollected = document.getElementById('worker-bee-pollen').innerHTML
+                let nectarused = document.getElementById('worker-bee-nectar').innerHTML
+                
                 let myChart = Highcharts.chart('container', {
                     chart: {
-                        type: 'line'
+                        type: 'bar'
                     },
                     title: {
-                        text: 'Pollen Collected vs. Nectar Used'
+                        text: 'Fruit Consumption'
                     },
                     xAxis: {
-                        title: {
-                            text: 'Weeks'
-                        },
-                        categories: ['Week-One', 'Week-Two', 'Week-Three']
+                        categories: ['Nectar', 'Pollen']
                     },
                     yAxis: {
                         title: {
-                            text: 'Combs'
+                            text: 'Fruit eaten'
                         }
                     },
                     series: [{
-                        name: 'PollenGlobs',
-                        data: [1, 0, 4]
-                    }, {
                         name: 'Nectar',
-                        data: [5, 7, 3]
+                        data: nectarused
+                    }, {
+                        name: 'Pollen',
+                        data: pollencollected
                     }]
                 });
             });
