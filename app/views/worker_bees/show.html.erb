@@ -18,11 +18,11 @@
             <p>Showing a bee named - <%= @worker_bee.bee_name%></p>
             <p>Bee Id - <%= @worker_bee.id%></p>
             <%if (@worker_bee.isSupervisor?[1].length == 1)%>
-                <p>Surpervisor of Comb - <%= @worker_bee.isSupervisor?[1][0] %></p>
+                <p>Supervisor of Comb - <%= @worker_bee.isSupervisor?[1][0] %></p>
             <%elsif (@worker_bee.isSupervisor?[1].length == 0)%>
-                <p>Surpervisor of Combs - none </p>
+                <p>Supervisor of Combs - none </p>
             <%else%>
-                <p>Surpervisor of Combs - <%= @worker_bee.isSupervisor?[1] %></p>
+                <p>Supervisor of Combs - <%= @worker_bee.isSupervisor?[1] %></p>
             <%end%>
         </div>
         <div class= "comb-info">
@@ -30,6 +30,9 @@
         </div>
         <div class="change-bee-comb">
             <p><%= render "change_comp", worker_bee: @worker_bee%></p>
+        </div>
+        <div>
+            <button id="simulate-week" ></button>
         </div>
         <p>Total Collection - <%= @worker_bee.individualBeeTotalCollection%></p>
     </div>

@@ -1,0 +1,25 @@
+<div id="worker-bee-pollen" style="display: none"><%= @worker_bee.simulateWeek%></div>
+
+     
+<script type='text/javascript'>
+    document.addEventListener('DOMContentLoaded', function () {
+        let simulateWeekButton = document.getElementById('simulate-week')
+        let bee_id
+        simulateWeekButton.addEventListener("click", () => {
+            $.ajax({
+                url: '/pollen_collections',
+                method: "POST",
+                data: {
+                        pollen_collection:{
+                        bee_id: 1,
+                        comb_id: 1,
+                        nectar_consumption: 5000,
+                        pollen_glob_collected: 14,
+                        advisement: 5000,
+                        advisement_accepted: "Yes"
+                    }
+                }
+            }).then(window.location.href = `http://localhost:3000/worker_bees/${bee_id}`)
+        })
+    });
+</script>

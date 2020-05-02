@@ -12,5 +12,6 @@ class PollenCollection < ApplicationRecord
     class_name: :Comb
 
 
+    
    
 end
