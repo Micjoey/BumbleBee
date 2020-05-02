@@ -1,6 +1,7 @@
 require 'action_view'
 
 class WorkerBee < ApplicationRecord
+
     include ActionView::Helpers::DateHelper
 
     belongs_to :Comb,

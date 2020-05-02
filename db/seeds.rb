@@ -18,18 +18,18 @@ ActiveRecord::Base.transaction do
     include Faker
 
     
-    
     20.times do 
-        Comb.create(
+        currentComb = Comb.create(
             # total_nectar_volume: rand(0..10).ceil,
             sweet_spot: rand(10..15).ceil
         )
-        WorkerBee.create(
-            nectar: rand(200..20000).ceil, # <---(200..20000) /200 
+        currentWorker = WorkerBee.create(
+            nectar: rand(200..20000), 
+            # nectar: beeNectar, 
             bee_name: Faker::Name.first_name,
-            comb_id: rand(20).ceil
+            comb_id: Comb.last.id
         )
-        
+    
     end
     x = 0
     until x == 20 do
@@ -51,8 +51,34 @@ ActiveRecord::Base.transaction do
         end
             id = rand(20).floor
             current_bee = WorkerBee.find_by(id: i)
-            nectar_consumption = rand(200..20000).floor
-            pollen_glob_collected = rand(5..17.9)
+            if (current_bee)
+                current_bee_nectar = current_bee.nectar
+            else
+                current_bee_nectar = rand(200..20000)
+            end
+
+            nectar_consumption = 0
+            on_vacay = rand(1..100) <= 10
+            
+            
+            if (!on_vacay) 
+                until nectar_consumption >= 200 do
+                nectar_consumption = (((current_bee_nectar/20000.00) + (rand(-10..10) /100.00) * 20000)).ceil.abs
+                end
+            end
+            range_variance = 0
+            if (nectar_consumption > current_bee_nectar)
+                range_variance = rand(-40..10) /100.00
+            else
+                range_variance = rand(0..40) /100.00
+            end
+
+            pollen_gathered = (((current_bee_nectar/20000.00) + range_variance)*17.9).abs.round(1)
+            if (pollen_gathered > 17.9) 
+                pollen_gathered = 17.9
+            elsif (pollen_gathered < 5)
+                pollen_gathered = 5
+            end
             
             if (i % 3 == 0) 
                 advisement = ["Yes", "No"].sample
@@ -62,8 +88,8 @@ ActiveRecord::Base.transaction do
             PollenCollection.create(
                 bee_id: i,
                 comb_id: id,
-                nectar_consumption: rand(200..20000).floor,
-                pollen_glob_collected: rand(5..17.9),
+                nectar_consumption: nectar_consumption,
+                pollen_glob_collected: pollen_gathered,
                 advisement: advisement
             )
         i += 1
