@@ -16,8 +16,20 @@
     <div>
         <a href="http://localhost:3000/worker_bees">Go Back to all Bees</a>
     </div>
-    <div>
-        <p>Showing a bee named - <%= @worker_bee.bee_name%></p>
+    <div class="general-bee">
+        <div class= "bee-info">
+            <p>Showing a bee named - <%= @worker_bee.bee_name%></p>
+            <p>Bee Id - <%= @worker_bee.id%></p>
+            <%if (@worker_bee.isSupervisor?[1].length == 1)%>
+                <p>Surpervisor of Comb - <%= @worker_bee.isSupervisor?[1][0] %></p>
+            <%elsif (@worker_bee.isSupervisor?[1].length == 0)%>
+                <p>Surpervisor of Combs - none </p>
+            <%else%>
+                <p>Surpervisor of Combs - <%= @worker_bee.isSupervisor?[1] %></p>
+            <%end%>
+            
+
+        </div>
         <div class="change-bee-comb">
             <p><%= render "change_comp", worker_bee: @worker_bee%></p>
         </div>

@@ -10,4 +10,5 @@ class SupervisorBee < ApplicationRecord
     foreign_key: :bee_id,
     class_name: :WorkerBee
 
+
 end

@@ -34,8 +34,8 @@ ActiveRecord::Base.transaction do
     x = 0
     until x == 20 do
         newBee = SupervisorBee.new(
-                bee_id: rand(0..20).ceil,
-                comb_id: rand(0..20).floor
+                bee_id: rand(1..20).ceil,
+                comb_id: rand(1..20).floor
             )
         if (newBee.bee_id != newBee.comb_id && newBee.save )
             x += 1 
@@ -44,28 +44,6 @@ ActiveRecord::Base.transaction do
     
    
     
-#    100.times do 
-#     i = 0  
-#     visited = {}
-#         60.times do
-#             bee_id = rand(20.ceil).ceil
-#             visited[bee_id] == 0 ? visited[bee_id] += 1 : visited[bee_id] == 0
-#             if (visited[bee_id] == 10) 
-#                 until visited[bee_id] != 10
-#                     bee_id = rand(20.ceil).ceil
-#                 end
-#             end
-
-#             PollenCollection.create(
-#                 bee_id: bee_id,
-#                 comb_id: i,
-#                 nectar_consumption: rand(200..20000).floor,
-#                 pollen_glob_collected: rand(5..17.9)
-#             )
-
-#     i += 1
-#         end 
-#    end
     i = 0
     5000.times do
         if (i == 20)

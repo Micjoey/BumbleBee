@@ -16,9 +16,11 @@ class WorkerBee < ApplicationRecord
     foreign_key: :bee_id,
     class_name: :PollenCollection
 
-    def supervisor?
-        workerBee = self
-        isSupervisor = !!workerBee.supervisors
+    def isSupervisor?
+        workerbee = self
+        supervisor_of = workerbee.supervisors.ids
+        answer =supervisor_of.include?(workerbee.comb_id)
+        [answer, supervisor_of]
     end
 
     def individualBeeTotalCollection
