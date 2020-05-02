@@ -18,9 +18,8 @@
     </div>
     <div>
         <p>Showing a bee named - <%= @worker_bee.bee_name%></p>
-        <p>Current Comb - <%= @worker_bee.comb_id%></p>
         <div class="change-bee-comb">
-            <%= render "change_comp", worker_bee: @worker_bee%>
+            <p><%= render "change_comp", worker_bee: @worker_bee%></p>
         </div>
         <p>Total Collection - <%= @worker_bee.individualBeeTotalCollection%></p>
     </div>
