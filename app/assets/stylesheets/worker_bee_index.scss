@@ -1,0 +1,81 @@
+header {
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+
+}
+
+
+.information {
+    display: block;
+    justify-content: left;
+}
+    .information{
+    }
+        .average-bee-information {
+                display: flex;
+                padding-left: 1em;
+        }
+            .average-information-line {
+                padding: 0em 1em;
+            }
+       
+        .all-bees {
+            h1 {
+                display: flex;
+                justify-content: center;
+            }
+        }
+            .list-of-bees{
+                display: block;
+                align-items: center;
+            }
+                .grid-list-of-bees {
+                    // display: flex;
+                    // position: fixed;
+                    // justify-content: center;
+                    display: grid;
+                        grid-template-columns: auto auto auto auto;
+                        padding: 1em;
+                }
+                    .individual-bee-name-link {
+                        display: block;
+                        padding: 1em;
+                        // position: fixed;
+                    }
+                        .individual-bee-link{
+                            // position: fixed;
+                            width: 100%;
+                        }
+
+                            .individual-bee-info-link {
+                                display: block;
+                                margin: 1em;
+                                text-decoration: none;
+                                color: black;
+                                height: 100%;
+                                width: 100%;
+                            }
+                            .individual-bee-info-link:hover {
+                                background-color: rgba(255, 166, 0, 0.269);
+                                cursor: pointer;
+                                font-weight: bold;
+                            }
+            
+        
+    
+    
+.list-of-bees {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+    
+
+
+body {
+
+}
+
+
+
