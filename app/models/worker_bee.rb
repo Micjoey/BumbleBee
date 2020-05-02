@@ -41,10 +41,11 @@ class WorkerBee < ApplicationRecord
         pollen_collection = PollenCollection.where(bee_id: self.id, comb_id: self.comb_id)
         @pollen_array = pollen_collection.to_a.map{|p| p.pollen_glob_collected}
     end
+
     def nectarUsed
         current_bee = self
         pollen_collection = PollenCollection.where(bee_id: self.id, comb_id: self.comb_id)
-        @pollen_array = pollen_collection.to_a.map{|p| p.nectar_consumption}
+        @nectar_array = pollen_collection.to_a.map{|p| p.nectar_consumption}
     end
 
     
@@ -55,9 +56,6 @@ class WorkerBee < ApplicationRecord
         pollen_array = pollen_collection.to_a.map{|p| p.comb_id}.uniq().sort()
     end
 
-    def time
-        time_ago_in_words(date_created)
-    end
 
     def allGlobs2
         gon.allGlobs = self.allGlobs

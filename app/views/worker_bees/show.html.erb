@@ -45,34 +45,154 @@
     </div>
     <div id="worker-bee-pollen" style="display"><%= @worker_bee.pollenCollected%></div>
     <div id="worker-bee-nectar" style="display"><%= @worker_bee.nectarUsed%></div>
+    <div id="worker-bee-length" style="display"> <%= @worker_bee.allGlobs.length%></div>
     <div id="container" style="width:100%; height:400px;">
         <script type='text/javascript'>
             document.addEventListener('DOMContentLoaded', function () {
-                let pollencollected = document.getElementById('worker-bee-pollen').innerHTML
-                let nectarused = document.getElementById('worker-bee-nectar').innerHTML
-                
+                let pollenCollected = JSON.parse(document.getElementById('worker-bee-pollen').innerHTML)
+                let nectarUsed = JSON.parse(document.getElementById('worker-bee-nectar').innerHTML)
+                const weeks = function() {
+                    let length = 20
+
+                    let array = []
+                    for (let x = 0; x< length; x++) {
+                        array.push(`week-${x}`)
+                    }
+                    return array
+                }
                 let myChart = Highcharts.chart('container', {
                     chart: {
-                        type: 'bar'
+                        zoomType: 'xy'
                     },
                     title: {
-                        text: 'Fruit Consumption'
+                        text: 'Average Monthly Weather Data for Tokyo',
+                        align: 'left'
                     },
-                    xAxis: {
-                        categories: ['Nectar', 'Pollen']
+                    subtitle: {
+                        text: 'Source: WorldClimate.com',
+                        align: 'left'
                     },
-                    yAxis: {
+                    xAxis: [{
+                        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        crosshair: true
+                    }],
+                    yAxis: [{ // Primary yAxis
+                        labels: {
+                            format: '{value}°C',
+                            style: {
+                                color: Highcharts.getOptions().colors[2]
+                            }
+                        },
                         title: {
-                            text: 'Fruit eaten'
+                            text: 'Temperature',
+                            style: {
+                                color: Highcharts.getOptions().colors[2]
+                            }
+                        },
+                        opposite: true
+
+                    }, { // Secondary yAxis
+                        gridLineWidth: 0,
+                        title: {
+                            text: 'Rainfall',
+                            style: {
+                                color: Highcharts.getOptions().colors[0]
+                            }
+                        },
+                        labels: {
+                            format: '{value} mm',
+                            style: {
+                                color: Highcharts.getOptions().colors[0]
+                            }
                         }
+
+                    }, { // Tertiary yAxis
+                        gridLineWidth: 0,
+                        title: {
+                            text: 'Sea-Level Pressure',
+                            style: {
+                                color: Highcharts.getOptions().colors[1]
+                            }
+                        },
+                        labels: {
+                            format: '{value} mb',
+                            style: {
+                                color: Highcharts.getOptions().colors[1]
+                            }
+                        },
+                        opposite: true
+                    }],
+                    tooltip: {
+                        shared: true
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'left',
+                        x: 80,
+                        verticalAlign: 'top',
+                        y: 55,
+                        floating: true,
+                        backgroundColor:
+                            Highcharts.defaultOptions.legend.backgroundColor || // theme
+                            'rgba(255,255,255,0.25)'
                     },
                     series: [{
-                        name: 'Nectar',
-                        data: nectarused
-                    }, {
                         name: 'Pollen',
-                        data: pollencollected
-                    }]
+                        type: 'column',
+                        yAxis: 1,
+                        data: pollenCollected,
+                        tooltip: {
+                            valueSuffix: ' p/g'
+                        }
+
+                    }, {
+                        name: 'Nectar Consumption',
+                        type: 'spline',
+                        yAxis: 2,
+                        data: nectarUsed,
+                        marker: {
+                            enabled: false
+                        },
+                        dashStyle: 'shortdot',
+                        tooltip: {
+                            valueSuffix: ' mb'
+                        }
+                    }],
+                    responsive: {
+                        rules: [{
+                            condition: {
+                                maxWidth: 500
+                            },
+                            chartOptions: {
+                                legend: {
+                                    floating: false,
+                                    layout: 'horizontal',
+                                    align: 'center',
+                                    verticalAlign: 'bottom',
+                                    x: 0,
+                                    y: 0
+                                },
+                                yAxis: [{
+                                    labels: {
+                                        align: 'right',
+                                        x: 0,
+                                        y: -6
+                                    },
+                                    showLastLabel: false
+                                }, {
+                                    labels: {
+                                        align: 'left',
+                                        x: 0,
+                                        y: -6
+                                    },
+                                    showLastLabel: false
+                                }, {
+                                    visible: false
+                                }]
+                            }
+                        }]
+                    }
                 });
             });
     </script>
