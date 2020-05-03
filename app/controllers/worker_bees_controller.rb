@@ -1,5 +1,5 @@
 class WorkerBeesController < ApplicationController
-
+    include AdvisementLogic
     def create
         @worker_bee = WorkerBee.new(worker_bee_params)
         if @worker_bee.save
