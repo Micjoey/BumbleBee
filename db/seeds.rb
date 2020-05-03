@@ -31,7 +31,7 @@ ActiveRecord::Base.transaction do
         )
     
     end
-    x = 0
+    x = 1
     until x == 20 do
         newBee = SupervisorBee.new(
                 bee_id: rand(1..20).ceil,
@@ -44,12 +44,12 @@ ActiveRecord::Base.transaction do
     
    
     
-    i = 0
+    i = 1
     5000.times do
         if (i == 21)
-            i = 0
+            i = 1
         end
-            id = rand(20).floor
+            id = rand(1..20).floor
             current_comb = Comb.find_by(id: id)
             current_bee = WorkerBee.find_by(id: i)
 
