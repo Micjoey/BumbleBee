@@ -1,5 +1,7 @@
 class WorkerBeesController < ApplicationController
     include AdvisementLogic
+
+
     def create
         @worker_bee = WorkerBee.new(worker_bee_params)
         if @worker_bee.save
@@ -45,28 +47,7 @@ class WorkerBeesController < ApplicationController
     end
 
     
-    def simulateWeek
-        current_bee = self
-        pollen_collected = rand(5..17.9)
-        nectar_given = rand(2..3)
-        total_nectar = 0
-        nectar_given.times do
-            will_skip = rand(100) <= 10
-            if (!will_skip) 
-                total_nectar += rand(2..200).ceil
-            end
-        end
-        
-        new_pollen_collection = PollenCollection.new(
-            bee_id: current_bee.id,
-            comb_id: current_bee.comb_id,
-            pollen_glob_collected: pollen_collected
-        )
-        if (new_pollen_collection.save) 
-            render :show
-        end
-
-    end
+    
 
     def supervisor
         supervisor = SupervisorBee.where(bee_id: self.id, comb_id: self.comb_id)
@@ -75,7 +56,7 @@ class WorkerBeesController < ApplicationController
     end
     
 
-    
+   
 
     private
 

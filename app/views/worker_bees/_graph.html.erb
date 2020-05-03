@@ -4,12 +4,12 @@
      
 <script type='text/javascript'>
     document.addEventListener('DOMContentLoaded', function () {
-        let pollen_collected = JSON.parse(document.getElementById('worker-bee-pollen').innerHTML)
-        let nectar_used = JSON.parse(document.getElementById('worker-bee-nectar').innerHTML)
+        const pollen_collected = JSON.parse(document.getElementById('worker-bee-pollen').innerHTML)
+        const nectar_used = JSON.parse(document.getElementById('worker-bee-nectar').innerHTML)
 
 
 
-        let weeks = new Array(Math.max(pollen_collected.length, nectar_used.length))
+        const weeks = new Array(Math.max(pollen_collected.length, nectar_used.length))
         for(let x = 0; x <weeks.length; x++) {
             weeks[x] = `week-${x}`
         }

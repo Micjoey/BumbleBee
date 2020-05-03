@@ -17,6 +17,7 @@
         <div class= "bee-info">
             <p>Showing a bee named - <%= @worker_bee.bee_name%></p>
             <p>Bee Id - <%= @worker_bee.id%></p>
+            <p>Bee Nectar SweetSpot - <%= @worker_bee.nectar%></p>
             <%if (@worker_bee.is_supervisor?[1].length == 1)%>
                 <p>Supervisor of Comb - <%= @worker_bee.is_supervisor?[1][0] %></p>
             <%elsif (@worker_bee.is_supervisor?[1].length == 0)%>
@@ -32,7 +33,7 @@
             <p><%= render "change_comp", worker_bee: @worker_bee%></p>
         </div>
         <div>
-            <p><%= render "simulate_week", advisement_logic: @worker_bee.advisement_logic, worker_bee: @worker_bee %></p>
+            <p><%= render "simulate_week", worker_bee: @worker_bee, advisement: @worker_bee.advisement_logic %></p>
 
         </div>
         <p>Total Collection - <%= @worker_bee.individual_bee_total_collection%></p>

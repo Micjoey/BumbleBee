@@ -75,7 +75,7 @@ ActiveRecord::Base.transaction do
             if (nectar_consumption > current_bee_nectar)
                 # if a bee has too much nectar (drunk) it will could potentially do better but
                 # most likely will do poorly
-                range_variance = rand(-40..5) /100.00
+                range_variance = rand(-20..5) /100.00
             else
                 # if the nectar is less than or equal to the current_bee_nectar 
                 # than the bee will have a standard range of obtaining pollen

@@ -1,8 +1,7 @@
-require 'action_view'
+
 
 class WorkerBee < ApplicationRecord
-
-    include ActionView::Helpers::DateHelper
+    include AdvisementLogic
 
     belongs_to :Comb,
     foreign_key: :bee_id,
@@ -51,9 +50,6 @@ class WorkerBee < ApplicationRecord
             (((self.nectar/20000.00) + (rand(-10..10) /100.00) * 20000)).ceil.abs,
             rand(-40..5) /100.00,
             rand(-20..20) /100.00]
-
-
-        
     end
 
     def nectar_used

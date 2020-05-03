@@ -2,28 +2,42 @@
 <button id="simulate-week">Simulate Week</button>
 <div id="worker-bee-id" style="display: none"><%= worker_bee.id%></div>        
 <div id="worker-bee-comb-id" style="display: none"><%= worker_bee.comb_id%></div>
-<div id="advisement-logic" style="display: none"><%= worker_bee.comb_id%></div>
+<div id="advisement-logic" style="display: none"><%= advisement%></div>
+
+
+
         
 <script type='text/javascript'>
     document.addEventListener('DOMContentLoaded', function () {
-        let simulateWeekButton = document.getElementById('simulate-week')
-        let bee_id = document.getElementById('worker-bee-id').innerHTML
-        let comb_id = document.getElementById('worker-bee-comb-id').innerHTML
+        const simulateWeekButton = document.getElementById('simulate-week')
+        const advisement_logic = JSON.parse(document.getElementById('advisement-logic').innerHTML)
+        const bee_id = document.getElementById('worker-bee-id').innerHTML
+        const comb_id = document.getElementById('worker-bee-comb-id').innerHTML
+//      [current_bee.id, current_comb.id, nectar_consumption, pollen_gathered, advisement[0], advisement[1]]
+
+
         simulateWeekButton.addEventListener("click", () => {
-            $.ajax({
-                url: '/pollen_collections',
-                method: "POST",
-                data: {
-                        pollen_collection:{
-                        bee_id: bee_id,
-                        comb_id: bee_comb_id,
-                        nectar_consumption: 5000,
-                        pollen_glob_collected: 14,
-                        advisement: 5000,
-                        advisement_accepted: "Yes"
+            console.log(advisement_logic[advisement_logic.length-1] % 3 === 0)
+            console.log(advisement_logic[advisement_logic.length-1])
+            if (advisement_logic[advisement_logic.length] % 3 === 0) {
+                alert(`its the ${advisement_logic[advisement_logic.length]}`)
+               
+            }
+             $.ajax({
+                    url: '/pollen_collections',
+                    method: "POST",
+                    data: {
+                        pollen_collection: {
+                            bee_id: bee_id,
+                            comb_id: comb_id,
+                            nectar_consumption: advisement_logic[2],
+                            pollen_glob_collected: advisement_logic[3],
+                            advisement: advisement_logic[4],
+                            advisement_accepted: advisement_logic[5]
+                        }
                     }
-                }
-            }).then(window.location.href = `http://localhost:3000/worker_bees/${bee_id}`)
+                }).then(window.location.href = `http://localhost:3000/worker_bees/${bee_id}`)
+            
         })
     });
 </script>
