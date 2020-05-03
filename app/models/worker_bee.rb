@@ -44,10 +44,16 @@ class WorkerBee < ApplicationRecord
         pollen_collection = PollenCollection.where(bee_id: self.id, comb_id: self.comb_id)
         @pollen_array = pollen_collection.to_a.map{|p| p.pollen_glob_collected}
     end
-    def temp
-        current_bee = self
-        pollen_collection = PollenCollection.where(bee_id: self.id, comb_id: self.comb_id)
-        @temp = [self.id, self.comb_id]
+    
+    def relevant_math
+        math_object = [rand(200..20000),
+            rand(1..100) <= 10,
+            (((self.nectar/20000.00) + (rand(-10..10) /100.00) * 20000)).ceil.abs,
+            rand(-40..5) /100.00,
+            rand(-20..20) /100.00]
+
+
+        
     end
 
     def nectar_used

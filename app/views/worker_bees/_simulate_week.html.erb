@@ -1,18 +1,20 @@
-<div id="worker-bee-pollen" style="display: none"><%= @worker_bee.simulateWeek%></div>
 
-     
+<button id="simulate-week">Simulate Week</button>
+<div id="worker-bee-id" style="display: none"><%= worker_bee.id%></div>        
+<div id="worker-bee-comb-id" style="display: none"><%= worker_bee.comb_id%></div>        
 <script type='text/javascript'>
     document.addEventListener('DOMContentLoaded', function () {
         let simulateWeekButton = document.getElementById('simulate-week')
-        let bee_id
+        let bee_id = document.getElementById('worker-bee-id').innerHTML
+        let comb_id = document.getElementById('worker-bee-comb-id').innerHTML
         simulateWeekButton.addEventListener("click", () => {
             $.ajax({
                 url: '/pollen_collections',
                 method: "POST",
                 data: {
                         pollen_collection:{
-                        bee_id: 1,
-                        comb_id: 1,
+                        bee_id: bee_id,
+                        comb_id: bee_comb_id,
                         nectar_consumption: 5000,
                         pollen_glob_collected: 14,
                         advisement: 5000,

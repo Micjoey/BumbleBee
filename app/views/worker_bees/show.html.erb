@@ -32,7 +32,8 @@
             <p><%= render "change_comp", worker_bee: @worker_bee%></p>
         </div>
         <div>
-            <button id="simulate-week" >Simulate Week</button>
+            <p><%= render "simulate_week", worker_bee: @worker_bee, comb: @comb, relevant_math: @worker_bee.relevant_math%></p>
+
         </div>
         <p>Total Collection - <%= @worker_bee.individual_bee_total_collection%></p>
     </div>

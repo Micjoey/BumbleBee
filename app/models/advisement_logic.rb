@@ -1,57 +1,8 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-
-ActiveRecord::Base.transaction do
-
-    WorkerBee.destroy_all
-    Comb.destroy_all
-    SupervisorBee.destroy_all
-    PollenCollection.destroy_all
-
-    require 'faker'
-    include Faker
-
-    
-    20.times do 
-        currentComb = Comb.create(
-            # total_nectar_volume: rand(0..10).ceil,
-            sweet_spot: rand(10..15).ceil
-        )
-        currentWorker = WorkerBee.create(
-            nectar: rand(200..20000), 
-            # nectar: beeNectar, 
-            bee_name: Faker::Name.first_name,
-            comb_id: Comb.last.id
-        )
-    
-    end
-    x = 0
-    until x == 20 do
-        newBee = SupervisorBee.new(
-                bee_id: rand(1..20).ceil,
-                comb_id: rand(1..20).floor
-            )
-        if (newBee.bee_id != newBee.comb_id && newBee.save )
-            x += 1 
-        end
-    end
-    
-   
-    
-    i = 0
-    5000.times do
-        if (i == 21)
-            i = 0
-        end
-            id = rand(20).floor
-            current_comb = Comb.find_by(id: id)
-            current_bee = WorkerBee.find_by(id: i)
+module Advisementlogic
+    def advisement_logic(bee_id, comb_id)
+    id = rand(20).floor
+            current_comb = Comb.find_by(id: comb_id)
+            current_bee = WorkerBee.find_by(id: bee_id)
 
             # if the bee exits than the curre_bee_nectar will be assinged to accordingly, otherwise it will be a random number
             if (current_bee)
@@ -157,8 +108,4 @@ ActiveRecord::Base.transaction do
                 advisement: advisement,
                 advisement_accepted: advisement_accepted
             )
-        i += 1
-    end
-
-
 end
