@@ -9,10 +9,12 @@
 
 </head>
 <body>
-    <div>
+    <div class="background-color">
         <div class="show-bee-buttons">
-            <button onclick="window.location.href = 'http://localhost:3000/worker_bees'">Go Back to all Bees</button>
-            <p><%= render "simulate_week", worker_bee: @worker_bee, advisement: @worker_bee.advisement_logic %></p>
+            <button 
+                class= "index-bee-button"
+                onclick="window.location.href = 'http://localhost:3000/worker_bees'">Go Back to all Bees</button>
+            <%= render "simulate_week", worker_bee: @worker_bee, advisement: @worker_bee.advisement_logic %>
 
         </div>
         <div class="general-bee">
@@ -20,6 +22,7 @@
                 <p>Showing a bee named - <%= @worker_bee.bee_name%></p>
                 <p>Bee Id - <%= @worker_bee.id%></p>
                 <p>Bee Nectar SweetSpot - <%= @worker_bee.nectar%></p>
+                <p>Total amount of pollen collected - <%= @worker_bee.individual_bee_total_collection%></p>
                 <%if (@worker_bee.is_supervisor?[1].length == 1)%>
                     <p>Supervisor of comb - <%= @worker_bee.is_supervisor?[1][0] %></p>
                 <%elsif (@worker_bee.is_supervisor?[1].length == 0)%>
@@ -29,7 +32,7 @@
                 <%end%>
             </div>
             <div class= "comb-info">
-            <p>Comb's sweet spot - <%=@worker_bee.target_pollen%> p/g</p> 
+                <p>Comb's sweet spot - <%=@worker_bee.target_pollen%> p/g</p> 
             </div>
             <div class="change-bee-comb">
                 <p><%= render "change_comp", worker_bee: @worker_bee, comb_array: (1..20).to_a%></p>
@@ -37,13 +40,12 @@
             <div>
 
             </div>
-            <p>Total amount of pollen collected - <%= @worker_bee.individual_bee_total_collection%>.</p>
         </div>
         
         <div id="new-advisement">
                 <%= render "advisement_logic", worker_bee: @worker_bee, advisement: @worker_bee.advisement_logic%>
         </div>
-        <div id="container" style="width:100%; height:400px;">
+        <div id="container">
             <%= render "graph"%>
         </div>
 
