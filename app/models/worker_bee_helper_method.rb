@@ -7,8 +7,8 @@ module WorkerBeeHelperMethod
         answer =supervisor_of.include?(workerbee.comb_id)
         [answer, supervisor_of]
     end
-    def self.pollen_collection
-        PollenCollection.where(bee_id: self.id, comb_id: self.comb_id)
+    def self.all_pollen_collection(id, comb_id)
+        PollenCollection.where(bee_id: id, comb_id: comb_id)
     end
 
     def individual_bee_total_collection
@@ -21,7 +21,7 @@ module WorkerBeeHelperMethod
 
     def all_information_on_bee
         current_bee = self
-        pollen_collection = WorkerBeeHelperMethod.pollen_collection
+        pollen_collection = WorkerBeeHelperMethod.all_pollen_collection(self.id, self.comb_id)
         all_information = pollen_collection.to_a.map{|p| p}
         all_information
     end
@@ -43,7 +43,7 @@ module WorkerBeeHelperMethod
 
     def pollen_collected
         current_bee = self
-        pollen_collection = 
+        pollen_collection = WorkerBeeHelperMethod.all_pollen_collection(self.id, self.comb_id)
         @pollen_array = pollen_collection.to_a.map{|p| p.pollen_glob_collected}
     end
     
@@ -57,7 +57,7 @@ module WorkerBeeHelperMethod
 
     def nectar_used
         current_bee = self
-        pollen_collection = WorkerBeeHelperMethod.pollen_collection
+        pollen_collection = WorkerBeeHelperMethod.all_pollen_collection(self.id, self.comb_id)
         @nectar_array = pollen_collection.to_a.map{|p| p.nectar_consumption}
     end
 
