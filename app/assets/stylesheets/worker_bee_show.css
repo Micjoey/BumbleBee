@@ -35,3 +35,7 @@ tr:hover {
 .table-information-advanced {
     width: inherit;
 }
+
+.included-comb {
+    font-weight: bold;
+}

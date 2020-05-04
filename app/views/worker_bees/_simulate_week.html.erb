@@ -17,12 +17,6 @@
 
 
         simulateWeekButton.addEventListener("click", () => {
-            console.log(advisement_logic[advisement_logic.length-1] % 3 === 0)
-            console.log(advisement_logic[advisement_logic.length-1])
-            if (advisement_logic[advisement_logic.length] % 3 === 0) {
-                alert(`its the ${advisement_logic[advisement_logic.length]}`)
-               
-            }
              $.ajax({
                     url: '/pollen_collections',
                     method: "POST",

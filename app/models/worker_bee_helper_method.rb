@@ -62,6 +62,11 @@ module WorkerBeeHelperMethod
         sweet_spot = Comb.where(id: self.comb_id).to_a.map{|p| p.sweet_spot}[0]
     end
 
+    def all_combs_part_of
+        current_bee = self
+        pollen_collection = PollenCollection.where(bee_id: self.id)
+        pollen_array = pollen_collection.to_a.map{|p| p.comb_id}.uniq().sort()
+    end
 
     def in_need_of_advisement
     end

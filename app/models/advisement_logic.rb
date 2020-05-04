@@ -91,6 +91,7 @@ module AdvisementLogic
         if !advisement && !!current_bee
             advisement = current_bee.nectar
         end
+        advisement_accepted != nil ? nil : advisement_accepted = "n/a"
         [advisement, advisement_accepted, all_pollen.length]
     end
 
