@@ -49,11 +49,11 @@ class WorkerBeesController < ApplicationController
     
     
 
-    def supervisor
-        supervisor = SupervisorBee.where(bee_id: self.id, comb_id: self.comb_id)
-        current_bee = self
-        @supervisor = (current_bee.id == supervisor.bee_id && current_bee.comb_id == supervisor.comb_id) ? true : false
-    end
+    # def supervisor
+    #     supervisor = SupervisorBee.where(bee_id: self.id, comb_id: self.comb_id)
+    #     current_bee = self
+    #     @supervisor = (current_bee.id == supervisor.bee_id && current_bee.comb_id == supervisor.comb_id) ? true : false
+    # end
     
 
    

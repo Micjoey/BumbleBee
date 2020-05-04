@@ -66,7 +66,6 @@ class WorkerBee < ApplicationRecord
         current_bee = self
         pollen_collection = PollenCollection.where(bee_id: self.id)
         pollen_array = pollen_collection.to_a.map{|p| p.comb_id}.uniq().sort()
-
     end
 
 

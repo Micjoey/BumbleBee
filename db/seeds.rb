@@ -159,6 +159,16 @@ ActiveRecord::Base.transaction do
             )
         i += 1
     end
-
-
+    x = 1
+    until x == 20 do 
+        current_bee = WorkerBee.find_by(id: x)
+        comb_id = current_bee.comb_id
+        hasnt_collected = PollenCollection.where(bee_id: x, comb_id: comb_id).length == 0
+        if (hasnt_collected)
+            comb_id = rand(1..20)
+            current_bee.update(comb_id: comb_id)
+        else
+            x += 1
+        end
+    end
 end
