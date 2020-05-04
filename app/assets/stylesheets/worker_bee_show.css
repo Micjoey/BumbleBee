@@ -60,6 +60,7 @@ tr:hover {
 .new-advisement input label{
     display: flex;
     justify-content: center;
+    vertical-align: center;
 }
 .radio-buttons label {
     padding-right:10px;
@@ -71,6 +72,3 @@ tr:hover {
     
 }
 
-.worker-bee-advisement-radio {
-    display: flex;
-}
