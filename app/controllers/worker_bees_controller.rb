@@ -1,5 +1,4 @@
 class WorkerBeesController < ApplicationController
-    include AdvisementLogic
 
 
     def create
@@ -45,15 +44,6 @@ class WorkerBeesController < ApplicationController
     def average_bee_collection
         @worker_bee_averages = PollenCollection.average("pollen_glob_collected").round(2)
     end
-
-    
-    
-
-    # def supervisor
-    #     supervisor = SupervisorBee.where(bee_id: self.id, comb_id: self.comb_id)
-    #     current_bee = self
-    #     @supervisor = (current_bee.id == supervisor.bee_id && current_bee.comb_id == supervisor.comb_id) ? true : false
-    # end
     
 
    

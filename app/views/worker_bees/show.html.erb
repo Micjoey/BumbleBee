@@ -10,8 +10,11 @@
 </head>
 <body>
 <div>
-    <div>
+
+    <div class="show-bee-buttons">
         <button onclick="window.location.href = 'http://localhost:3000/worker_bees'">Go Back to all Bees</button>
+        <p><%= render "simulate_week", worker_bee: @worker_bee, advisement: @worker_bee.advisement_logic %></p>
+
     </div>
     <div class="general-bee">
         <div class= "bee-info">
@@ -19,11 +22,11 @@
             <p>Bee Id - <%= @worker_bee.id%></p>
             <p>Bee Nectar SweetSpot - <%= @worker_bee.nectar%></p>
             <%if (@worker_bee.is_supervisor?[1].length == 1)%>
-                <p>Supervisor of Comb - <%= @worker_bee.is_supervisor?[1][0] %></p>
+                <p>Supervisor of comb - <%= @worker_bee.is_supervisor?[1][0] %></p>
             <%elsif (@worker_bee.is_supervisor?[1].length == 0)%>
-                <p>Supervisor of Combs - none </p>
+                <p>Supervisor of no combs </p>
             <%else%>
-                <p>Supervisor of Combs - <%= @worker_bee.is_supervisor?[1] %></p>
+                <p>Supervisor of the following combs - <%= @worker_bee.is_supervisor?[1] %></p>
             <%end%>
         </div>
         <div class= "comb-info">
@@ -33,26 +36,23 @@
             <p><%= render "change_comp", worker_bee: @worker_bee%></p>
         </div>
         <div>
-            <p><%= render "simulate_week", worker_bee: @worker_bee, advisement: @worker_bee.advisement_logic %></p>
 
         </div>
-        <p>Total Collection - <%= @worker_bee.individual_bee_total_collection%></p>
-    </div>
-    <div>
-
+        <p>Total amount of pollen collected - <%= @worker_bee.individual_bee_total_collection%>.</p>
     </div>
     
 
     <div id="container" style="width:100%; height:400px;">
+
         <%= render "graph"%>
     </div>
 
-    <div>
-        <table>
-            <tr>
+    <div class="table-information">
+        <table class="table-information-advanced">
+            <tr class="table-titles">
                 <th>Week - #</th>
-                <th>ID</th>
-                <th>ID-CombId</th>
+                <th>Bee-ID</th>
+                <th>BeeID-CombId</th>
                 <th>Date</th>
                 <th>PollenGlobs</th>
                 <th>Nectar</th>
@@ -60,7 +60,7 @@
                 <th>% Accepted</th>
             </tr>
             <% @worker_bee.all_information_on_bee.each_with_index do |data, idx| %>
-                <tr>
+                <tr class="table-information">
                     <td class="data-columns">Week - <%=idx%></td> 
                     <td class="data-columns"><%=data.bee_id%></td> 
                     <td class="data-columns"><%=data.bee_id%>-C<%=data.comb_id%></td> 
