@@ -12,7 +12,7 @@ module AdvisementLogic
         nectar_consumption = 0
         if (!on_vacay) 
             until nectar_consumption >= 200 do
-            nectar_consumption = (((current_bee_nectar/20000.00) + (rand(-10..10) /100.00) * 20000)).ceil.abs
+            nectar_consumption = (((current_bee_nectar/20000.00) + (rand(-20..20) /100.00) * 20000)).abs
             end
         end
         nectar_consumption = nectar_consumption || 0
@@ -22,11 +22,11 @@ module AdvisementLogic
         if (nectar_consumption > current_bee_nectar)
             # if a bee has too much nectar (drunk) it will could potentially do better but
             # most likely will do poorly
-            range_variance = rand(-20..5) /100.00
+            range_variance = rand(-25..5) /100.00
         else
             # if the nectar is less than or equal to the current_bee_nectar 
             # than the bee will have a standard range of obtaining pollen
-            range_variance = rand(-10..10) /100.00
+            range_variance = rand(-15..15) /100.00
         end
         range_variance = range_variance || 0
     end
@@ -54,6 +54,7 @@ module AdvisementLogic
             .where(bee_id: id, comb_id: comb_id)
             .map{|a| a.nectar_consumption}
     end
+
     def advisement_sub_logic(id, current_comb, current_bee_nectar, current_bee)
         # every three weeks there is an advisement
         all_pollen = AdvisementLogic.all_pollen(self.id, current_comb.id)
@@ -84,9 +85,9 @@ module AdvisementLogic
                 # if the productivity is low than accept advisement
                 if pollen_average < current_comb.sweet_spot && nectar_average < current_bee_nectar
                     # grabs the last advisment number and times it by the suggested increase
-                    advisement = ((1-(pollen_average/current_comb.sweet_spot)) * AdvisementLogic.last_pollen_collection(id, current_comb)).floor
+                    advisement = ((1-(pollen_average/current_comb.sweet_spot)) * AdvisementLogic.last_pollen_collection(id, current_comb)).ceil
                     # advisement_accepted = "Yes"
-                else
+                else 
                     advisement_accepted = "No"
                     advisement = AdvisementLogic.last_pollen_collection(id, current_comb)
                 end
@@ -95,7 +96,7 @@ module AdvisementLogic
             advisement_accepted = "n/a"
         end
         if !advisement && !!current_bee
-            advisement = current_bee.nectar
+            advisement = AdvisementLogic.last_pollen_collection(id, current_comb)
         end
         
         advisement_accepted != nil ? nil : advisement_accepted = "n/a"
@@ -128,17 +129,7 @@ module AdvisementLogic
         # every three weeks there is an advisement
         advisement = advisement_sub_logic(current_bee.id, current_comb, current_bee_nectar, current_bee)
 
-        # PollenCollection.create(
-        #     bee_id: current_bee.id,
-        #     comb_id: current_comb.id,
-        #     nectar_consumption: nectar_consumption,
-        #     pollen_glob_collected: pollen_gathered,
-        #     advisement: advisement[0],
-        #     advisement_accepted: advisement[1]
-        # )
-        if !advisement[0]
 
-        end
         [current_bee.id, current_comb.id, nectar_consumption, pollen_gathered, advisement[0], advisement[1], advisement[2]]
     end
 
@@ -148,9 +139,7 @@ module AdvisementLogic
             ["comb_id", self.advisement_logic[1]],
             ["nectar_consumption", self.advisement_logic[2]],
             ["pollen_glob_collected", self.advisement_logic[3]],
-            ["advisement", self.advisement_logic[4]],
-
-        
+            ["advisement", self.advisement_logic[4]],  
         ]
     end
 

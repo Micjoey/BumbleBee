@@ -1,12 +1,11 @@
 
-<form 
+<form
         class="new-advisement" 
         id="advisement-form" 
         name="advisement-form" 
         method="POST" 
         action="<%= pollen_collections_url%>"
         >
-        <%# create an index %>
         <h1>Advisement: </h1>
         <p id="worker-bee-advisement">It is suggested to change the nectar levels to: <%=advisement[4]%> </p>
         <input type="radio" id="yes" name="pollen_collection[advisement_accepted]" value="Yes">
