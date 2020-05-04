@@ -1,5 +1,11 @@
 module AdvisementLogic
     
+    def self.last_pollen_collection(id, current_comb)
+        PollenCollection
+            .where(bee_id: id, comb_id: current_comb.id)
+            .map{|a| a.advisement}
+            .last
+    end
 
     def on_vacay(current_bee_nectar)
         on_vacay = rand(1..100) <= 10
@@ -96,12 +102,6 @@ module AdvisementLogic
         [advisement, advisement_accepted, all_pollen.length]
     end
 
-    def self.last_pollen_collection(id, current_comb)
-        PollenCollection
-            .where(bee_id: id, comb_id: current_comb.id)
-            .map{|a| a.advisement}
-            .last
-    end
 
     
     def advisement_logic
@@ -140,6 +140,18 @@ module AdvisementLogic
 
         end
         [current_bee.id, current_comb.id, nectar_consumption, pollen_gathered, advisement[0], advisement[1], advisement[2]]
+    end
+
+    def advisement_form
+        [
+            ["bee_id", self.advisement_logic[0]],
+            ["comb_id", self.advisement_logic[1]],
+            ["nectar_consumption", self.advisement_logic[2]],
+            ["pollen_glob_collected", self.advisement_logic[3]],
+            ["advisement", self.advisement_logic[4]],
+
+        
+        ]
     end
 
 end

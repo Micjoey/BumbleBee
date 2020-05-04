@@ -13,27 +13,13 @@
         <label for="Yes">Accept</label>
         <input type="radio" id="no" name="pollen_collection[advisement_accepted]" value="No">
         <label for="No">Deny</label><br>
+        <% worker_bee.advisement_form.each do |data| %>
+                <input 
+                type="hidden" 
+                name="pollen_collection[<%=data[0]%>]" 
+                value="<%= data[1]%>">
+        <%end%>
         
-        <input 
-                type="hidden" 
-                name="pollen_collection[bee_id]" 
-                value="<%= worker_bee.id%>">
-        <input 
-                type="hidden" 
-                name="pollen_collection[comb_id]" 
-                value="<%= worker_bee.comb_id%>">
-        <input 
-                type="hidden" 
-                name="pollen_collection[nectar_consumption]" 
-                value="<%= advisement[2]%>">
-        <input 
-                type="hidden" 
-                name="pollen_collection[pollen_glob_collected]" 
-                value="<%= advisement[3]%>">
-        <input 
-                type="hidden" 
-                name="pollen_collection[advisement]" 
-                value="<%= advisement[4]%>">
 
         <button 
                 type="submit" 
