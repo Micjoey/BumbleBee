@@ -37,22 +37,28 @@ module AdvisementLogic
         pollen_gathered
     end
 
+    def self.all_pollen(id, comb_id)
+        PollenCollection
+            .where(bee_id: id, comb_id: comb_id)
+            .map{|a| a.pollen_glob_collected}
+    end
+
+    def self.all_nectar_consumption(id, comb_id)
+        PollenCollection
+            .where(bee_id: id, comb_id: comb_id)
+            .map{|a| a.nectar_consumption}
+    end
     def advisement_sub_logic(id, current_comb, current_bee_nectar, current_bee)
         # every three weeks there is an advisement
-        all_pollen = PollenCollection
-                                    .where(bee_id: self.id, comb_id: current_comb.id)
-                                    .map{|a| a.pollen_glob_collected}
+        all_pollen = AdvisementLogic.all_pollen(self.id, current_comb.id)
+
         if all_pollen.length % 3 == 0
             # this grabs all pollen data
-            all_pollen = PollenCollection
-                                    .where(bee_id: id, comb_id: current_comb.id)
-                                    .map{|a| a.pollen_glob_collected}
             all_pollen_length = all_pollen.length 
             
-            all_nectar = PollenCollection
-                                        .where(bee_id: id, comb_id: current_comb.id)
-                                        .map{|a| a.nectar_consumption}
-            all_nectar_length   = all_nectar.length 
+            all_nectar = AdvisementLogic.all_nectar_consumption(id, current_comb.id)
+
+            all_nectar_length = all_nectar.length 
                 
             # if the last three weeks exists than continue;
             if all_pollen_length >= 3 && all_nectar_length >= 3
@@ -72,29 +78,30 @@ module AdvisementLogic
                 # if the productivity is low than accept advisement
                 if pollen_average < current_comb.sweet_spot && nectar_average < current_bee_nectar
                     # grabs the last advisment number and times it by the suggested increase
-                    advisement = ((1-(pollen_average/current_comb.sweet_spot)) * PollenCollection
-                                        .where(bee_id: id, comb_id: current_comb.id)
-                                        .map{|a| a.advisement}
-                                        .last).floor
+                    advisement = ((1-(pollen_average/current_comb.sweet_spot)) * AdvisementLogic.last_pollen_collection(id, current_comb)).floor
                     # advisement_accepted = "Yes"
                 else
                     advisement_accepted = "No"
-                    advisement = PollenCollection
-                                    .where(bee_id: id, comb_id: current_comb.id)
-                                    .map{|a| a.advisement}
-                                    .last
+                    advisement = AdvisementLogic.last_pollen_collection(id, current_comb)
                 end
             end
         else
             advisement_accepted = "n/a"
         end
-        # if !advisement && !!current_bee
-        #     advisement = current_bee.nectar
-        # end
+        if !advisement && !!current_bee
+            advisement = current_bee.nectar
+        end
+        
         advisement_accepted != nil ? nil : advisement_accepted = "n/a"
         [advisement, advisement_accepted, all_pollen.length]
     end
 
+    def self.last_pollen_collection(id, current_comb)
+        PollenCollection
+            .where(bee_id: id, comb_id: current_comb.id)
+            .map{|a| a.advisement}
+            .last
+    end
 
     
     def advisement_logic
@@ -129,6 +136,9 @@ module AdvisementLogic
         #     advisement: advisement[0],
         #     advisement_accepted: advisement[1]
         # )
+        if !advisement[0]
+
+        end
         [current_bee.id, current_comb.id, nectar_consumption, pollen_gathered, advisement[0], advisement[1], advisement[2]]
     end
 

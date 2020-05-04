@@ -2,6 +2,7 @@
 
 class WorkerBee < ApplicationRecord
     include WorkerBeeHelperMethod
+    # WorkerBee --> WorkerBeeHelperMethod --> AdvisementLogic
 
     belongs_to :Comb,
     foreign_key: :bee_id,
@@ -16,7 +17,6 @@ class WorkerBee < ApplicationRecord
     foreign_key: :bee_id,
     class_name: :PollenCollection
    
+    
 
-    
-    
 end
