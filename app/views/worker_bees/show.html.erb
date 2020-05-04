@@ -9,77 +9,73 @@
 
 </head>
 <body>
-<div>
-
-    <div class="show-bee-buttons">
-        <button onclick="window.location.href = 'http://localhost:3000/worker_bees'">Go Back to all Bees</button>
-        <p><%= render "simulate_week", worker_bee: @worker_bee, advisement: @worker_bee.advisement_logic %></p>
-
-    </div>
-    <div class="general-bee">
-        <div class= "bee-info">
-            <p>Showing a bee named - <%= @worker_bee.bee_name%></p>
-            <p>Bee Id - <%= @worker_bee.id%></p>
-            <p>Bee Nectar SweetSpot - <%= @worker_bee.nectar%></p>
-            <%if (@worker_bee.is_supervisor?[1].length == 1)%>
-                <p>Supervisor of comb - <%= @worker_bee.is_supervisor?[1][0] %></p>
-            <%elsif (@worker_bee.is_supervisor?[1].length == 0)%>
-                <p>Supervisor of no combs </p>
-            <%else%>
-                <p>Supervisor of the following combs - <%= @worker_bee.is_supervisor?[1] %></p>
-            <%end%>
-        </div>
-        <div class= "comb-info">
-           <p>Comb's sweet spot - <%=@worker_bee.target_pollen%> p/g</p> 
-        </div>
-        <div class="change-bee-comb">
-            <p><%= render "change_comp", worker_bee: @worker_bee, comb_array: (1..20).to_a%></p>
-        </div>
-        <div>
+    <div>
+        <div class="show-bee-buttons">
+            <button onclick="window.location.href = 'http://localhost:3000/worker_bees'">Go Back to all Bees</button>
+            <p><%= render "simulate_week", worker_bee: @worker_bee, advisement: @worker_bee.advisement_logic %></p>
 
         </div>
-        <p>Total amount of pollen collected - <%= @worker_bee.individual_bee_total_collection%>.</p>
-    </div>
-    
+        <div class="general-bee">
+            <div class= "bee-info">
+                <p>Showing a bee named - <%= @worker_bee.bee_name%></p>
+                <p>Bee Id - <%= @worker_bee.id%></p>
+                <p>Bee Nectar SweetSpot - <%= @worker_bee.nectar%></p>
+                <%if (@worker_bee.is_supervisor?[1].length == 1)%>
+                    <p>Supervisor of comb - <%= @worker_bee.is_supervisor?[1][0] %></p>
+                <%elsif (@worker_bee.is_supervisor?[1].length == 0)%>
+                    <p>Supervisor of no combs </p>
+                <%else%>
+                    <p>Supervisor of the following combs - <%= @worker_bee.is_supervisor?[1] %></p>
+                <%end%>
+            </div>
+            <div class= "comb-info">
+            <p>Comb's sweet spot - <%=@worker_bee.target_pollen%> p/g</p> 
+            </div>
+            <div class="change-bee-comb">
+                <p><%= render "change_comp", worker_bee: @worker_bee, comb_array: (1..20).to_a%></p>
+            </div>
+            <div>
 
-    <div id="container" style="width:100%; height:400px;">
+            </div>
+            <p>Total amount of pollen collected - <%= @worker_bee.individual_bee_total_collection%>.</p>
+        </div>
+        
+        <div id="new-advisement">
+                <%= render "advisement_logic", worker_bee: @worker_bee, advisement: @worker_bee.advisement_logic%>
+        </div>
+        <div id="container" style="width:100%; height:400px;">
+            <%= render "graph"%>
+        </div>
 
-        <%= render "graph"%>
-    </div>
-
-    <div class="table-information">
-        <table class="table-information-advanced">
-            <tr class="table-titles">
-                <th>Week - #</th>
-                <th>Bee-ID</th>
-                <th>BeeID-CombId</th>
-                <th>Date</th>
-                <th>PollenGlobs</th>
-                <th>Nectar</th>
-                <th>Advisement</th>
-                <th>% Accepted</th>
-            </tr>
-            <% @worker_bee.all_information_on_bee.each_with_index do |data, idx| %>
-                <tr class="table-information">
-                    <td class="data-columns">Week - <%=idx + 1%></td> 
-                    <td class="data-columns"><%=data.bee_id%></td> 
-                    <td class="data-columns"><%=data.bee_id%>-C<%=data.comb_id%></td> 
-                    <td class="data-columns"><%=data.created_at.to_s.split(" ")[0]%></td> 
-                    <td class="data-columns"><%=data.pollen_glob_collected%> p/g</td> 
-                    <td class="data-columns"><%=data.nectar_consumption%> Units</td> 
-                    <td class="data-columns"><%=data.advisement%> Units</td>
-                    <td class="data-columns"><%= @worker_bee.advisement_accepted[idx].round(2)%>%</td>
+        <div class="table-information">
+            <table class="table-information-advanced">
+                <tr class="table-titles">
+                    <th>Week - #</th>
+                    <th>Bee-ID</th>
+                    <th>BeeID-CombId</th>
+                    <th>Date</th>
+                    <th>PollenGlobs</th>
+                    <th>Nectar</th>
+                    <th>Advisement</th>
+                    <th>% Accepted</th>
                 </tr>
-            <%end%>
-            <tr>
-               
-            </tr>
-        </table>
-    
-    </div>
-    
-    
-    
+                <% @worker_bee.all_information_on_bee.each_with_index do |data, idx| %>
+                    <tr class="table-information">
+                        <td class="data-columns">Week - <%=idx + 1%></td> 
+                        <td class="data-columns"><%=data.bee_id%></td> 
+                        <td class="data-columns"><%=data.bee_id%>-C<%=data.comb_id%></td> 
+                        <td class="data-columns"><%=data.created_at.to_s.split(" ")[0]%></td> 
+                        <td class="data-columns"><%=data.pollen_glob_collected%> p/g</td> 
+                        <td class="data-columns"><%=data.nectar_consumption%> Units</td> 
+                        <td class="data-columns"><%=data.advisement%> Units</td>
+                        <td class="data-columns"><%= @worker_bee.advisement_accepted[idx].round(2)%>%</td>
+                    </tr>
+                <%end%>
+                <tr>
+                
+                </tr>
+            </table>
+        </div>
     </div>
 
 

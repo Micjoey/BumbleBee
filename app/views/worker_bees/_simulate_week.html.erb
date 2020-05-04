@@ -14,9 +14,17 @@
         const bee_id = document.getElementById('worker-bee-id').innerHTML
         const comb_id = document.getElementById('worker-bee-comb-id').innerHTML
 //      [current_bee.id, current_comb.id, nectar_consumption, pollen_gathered, advisement[0], advisement[1]]
-
+        const advisement_div = document.getElementsByClassName("new-advisement")[0]
 
         simulateWeekButton.addEventListener("click", () => {
+            // alert(`week - ${advisement_logic[6]+1} and ${(advisement_logic[6]+1) % 3 === 0}`)
+            if ((advisement_logic[6]+1) % 3 === 0) {
+                advisement_div.style.display = "block"
+            } else {
+                advisement_div.style.display = null
+            }
+            console.log(advisement_div)
+            console.log(advisement_logic[6]+1)
              $.ajax({
                     url: '/pollen_collections',
                     method: "POST",
@@ -30,7 +38,8 @@
                             advisement_accepted: advisement_logic[5]
                         }
                     }
-                }).then(window.location.href = `http://localhost:3000/worker_bees/${bee_id}`)
+                })
+                // .then(window.location.href = `http://localhost:3000/worker_bees/${bee_id}`)
             
         })
     });

@@ -39,3 +39,7 @@ tr:hover {
 .included-comb {
     font-weight: bold;
 }
+
+.new-advisement {
+    display: none;
+}
