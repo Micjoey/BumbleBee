@@ -13,7 +13,8 @@
         <div class="show-bee-buttons">
             <button 
                 class= "index-bee-button"
-                onclick="window.location.href = 'http://localhost:3000/worker_bees'">Go Back to all Bees (Add bee Icon)</button>
+                onclick="window.location.href = 'http://localhost:3000/worker_bees'">Go Back to all Bees <img src="https://github.com/Micjoey/Dosis/blob/master/app/assets/images/bee.png" alt="" ></button>
+                
             <%= render "simulate_week", worker_bee: @worker_bee, advisement: @worker_bee.advisement_logic %>
 
         </div>
