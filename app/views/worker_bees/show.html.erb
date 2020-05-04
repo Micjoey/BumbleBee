@@ -84,7 +84,6 @@
                     <th>PollenGlobs</th>
                     <th>Nectar</th>
                     <th>Advisement</th>
-                    <th>Edit Advisement</th>
                 </tr>
                 <% @worker_bee.all_information_on_bee.each_with_index do |data, idx| %>
                     <tr class="table-information-columns">
@@ -93,7 +92,6 @@
                         <td class="data-columns"><%=data.pollen_glob_collected%> p/g</td> 
                         <td class="data-columns"><%=data.nectar_consumption%> Units</td> 
                         <td class="data-columns"><%=data.advisement%> Units</td>
-                        <td class="data-columns">Edit</td>
                     </tr>
                 <%end%>
                 <tr>

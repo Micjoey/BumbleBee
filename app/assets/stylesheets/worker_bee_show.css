@@ -23,9 +23,11 @@ th, td {
 }
 
 tr:nth-child(even) {background-color: #f2f2f2;}
-tr:hover {
+
+tr:not(:first-child):hover {
     background-color: lavender;
 }
+
 
 .both-table-information {
     margin: 0;
