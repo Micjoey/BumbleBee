@@ -16,11 +16,11 @@ module AdvisementLogic
         if (nectar_consumption > current_bee_nectar)
             # if a bee has too much nectar (drunk) it will could potentially do better but
             # most likely will do poorly
-            range_variance = rand(-40..5) /100.00
+            range_variance = rand(-20..5) /100.00
         else
             # if the nectar is less than or equal to the current_bee_nectar 
             # than the bee will have a standard range of obtaining pollen
-            range_variance = rand(-20..20) /100.00
+            range_variance = rand(-10..10) /100.00
         end
         range_variance = range_variance || 0
     end
