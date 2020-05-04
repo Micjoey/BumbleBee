@@ -41,7 +41,7 @@ tr:hover {
 }
 
 .new-advisement {
-    /* display: none; */
+    display: none;
     position: fixed;
     z-index: 2;
     bottom: 85px;
