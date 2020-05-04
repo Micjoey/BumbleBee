@@ -4,7 +4,8 @@ class PollenCollection < ApplicationRecord
 
     belongs_to :bee,
     foreign_key: :bee_id,
-    class_name: :WorkerBee
+    class_name: :WorkerBee,
+    optional: true
 
 
     belongs_to :comb,

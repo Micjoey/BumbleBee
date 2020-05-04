@@ -76,7 +76,7 @@ module AdvisementLogic
                                         .where(bee_id: id, comb_id: current_comb.id)
                                         .map{|a| a.advisement}
                                         .last).floor
-                    advisement_accepted = "Yes"
+                    # advisement_accepted = "Yes"
                 else
                     advisement_accepted = "No"
                     advisement = PollenCollection
@@ -88,9 +88,9 @@ module AdvisementLogic
         else
             advisement_accepted = "n/a"
         end
-        if !advisement && !!current_bee
-            advisement = current_bee.nectar
-        end
+        # if !advisement && !!current_bee
+        #     advisement = current_bee.nectar
+        # end
         advisement_accepted != nil ? nil : advisement_accepted = "n/a"
         [advisement, advisement_accepted, all_pollen.length]
     end

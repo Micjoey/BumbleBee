@@ -15,6 +15,7 @@ class WorkerBee < ApplicationRecord
     has_many :pollen_collections,
     foreign_key: :bee_id,
     class_name: :PollenCollection
+   
 
     
     
