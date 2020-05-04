@@ -84,3 +84,11 @@ input:hover, button:hover {
 
 button:focus {outline:0;}
 
+.both-table-information {
+	max-height: 370px;
+	scroll-behavior: auto;
+	overflow: auto;
+	margin: 0px 5px;
+
+}
+

@@ -21,10 +21,7 @@
                 advisement_div.style.display = "block"
             } else {
                 advisement_div.style.display = null
-            }
-            console.log(advisement_div)
-            console.log(advisement_logic[6]+1)
-             $.ajax({
+                $.ajax({
                     url: '/pollen_collections',
                     method: "POST",
                     data: {
@@ -38,7 +35,9 @@
                         }
                     }
                 }).then(window.location.href = `http://localhost:3000/worker_bees/${bee_id}`)
-            
+            }
+            // console.log(advisement_div)
+            // console.log(advisement_logic[6]+1) 
         })
     });
 </script>

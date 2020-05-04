@@ -1,12 +1,42 @@
 
-<form class="new-advisement" id="advisement-form" name="advisement-form" action="">
+<form 
+        class="new-advisement" 
+        id="advisement-form" 
+        name="advisement-form" 
+        method="POST" 
+        action="<%= pollen_collections_url%>"
+        >
 
         <h1>Advisement: </h1>
         <p id="worker-bee-advisement">It is suggested to change the nectar levels to: <%=advisement[4]%> </p>
-        <input type="radio" id="yes" name="accepted" value="Yes">
-        <label for="male">Accept</label>
-        <input type="radio" id="no" name="accepted" value="No">
-        <label for="female">Deny</label><br>
-        <input type="submit" value="submit">
+        <input type="radio" id="yes" name="pollen_collection[advisement_accepted]" value="Yes">
+        <label for="Yes">Accept</label>
+        <input type="radio" id="no" name="pollen_collection[advisement_accepted]" value="No">
+        <label for="No">Deny</label><br>
+        <input 
+                type="hidden" 
+                name="pollen_collection[bee_id]" 
+                value="<%= worker_bee.id%>">
+        <input 
+                type="hidden" 
+                name="pollen_collection[comb_id]" 
+                value="<%= worker_bee.comb_id%>">
+        <input 
+                type="hidden" 
+                name="pollen_collection[nectar_consumption]" 
+                value="<%= advisement[2]%>">
+        <input 
+                type="hidden" 
+                name="pollen_collection[pollen_glob_collected]" 
+                value="<%= advisement[3]%>">
+        <input 
+                type="hidden" 
+                name="pollen_collection[advisement]" 
+                value="<%= advisement[4]%>">
 
+        <button 
+                type="submit" 
+                value="submit" 
+                onclick="setTimeout(function () { window.location.reload(); }, 10)"
+                >       Submit</button>
 </form>
