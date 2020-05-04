@@ -33,7 +33,7 @@
            <p>Comb's sweet spot - <%=@worker_bee.target_pollen%> p/g</p> 
         </div>
         <div class="change-bee-comb">
-            <p><%= render "change_comp", worker_bee: @worker_bee%></p>
+            <p><%= render "change_comp", worker_bee: @worker_bee, comb_array: (1..20).to_a%></p>
         </div>
         <div>
 
@@ -61,7 +61,7 @@
             </tr>
             <% @worker_bee.all_information_on_bee.each_with_index do |data, idx| %>
                 <tr class="table-information">
-                    <td class="data-columns">Week - <%=idx%></td> 
+                    <td class="data-columns">Week - <%=idx + 1%></td> 
                     <td class="data-columns"><%=data.bee_id%></td> 
                     <td class="data-columns"><%=data.bee_id%>-C<%=data.comb_id%></td> 
                     <td class="data-columns"><%=data.created_at.to_s.split(" ")[0]%></td> 
@@ -81,7 +81,7 @@
     
     
     </div>
-</>
+
 
 </body>
 </html>

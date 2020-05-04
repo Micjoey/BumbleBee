@@ -5,7 +5,7 @@
 
     <select name="worker_bee[comb_id]" id="worker-bee-comb">
     <option disabled selected>-- select a comb --</option>
-        <% worker_bee.all_combs_part_of.each do |comb|%>
+        <% comb_array.each do |comb|%>
         <option
             <%= worker_bee.comb_id == comb ? "selected" : "" %>
             value="<%= comb %>">

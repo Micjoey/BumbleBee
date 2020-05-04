@@ -11,7 +11,7 @@
 
         const weeks = new Array(Math.max(pollen_collected.length, nectar_used.length))
         for(let x = 0; x <weeks.length; x++) {
-            weeks[x] = `week-${x}`
+            weeks[x] = `week-${x+1}`
         }
         let myChart = Highcharts.chart('container', {
             chart: {
