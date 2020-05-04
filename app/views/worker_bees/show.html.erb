@@ -48,7 +48,9 @@
         </div>
 
         <div class="table-information">
-            <table class="table-information-advanced">
+        <button id="graph-switch-button">Regular View</button>
+        <%= render "graph_switch_logic"%>
+            <table class="table-information-advanced" >
                 <tr class="table-titles">
                     <th>Week - #</th>
                     <th>Bee-ID</th>
@@ -69,6 +71,29 @@
                         <td class="data-columns"><%=data.nectar_consumption%> Units</td> 
                         <td class="data-columns"><%=data.advisement%> Units</td>
                         <td class="data-columns"><%= @worker_bee.advisement_accepted[idx].round(2)%>%</td>
+                    </tr>
+                <%end%>
+                <tr>
+                
+                </tr>
+            </table>
+            <table class="table-information-regular" >
+                <tr class="table-titles">
+                    <th>Week - #</th>
+                    <th>Date</th>
+                    <th>PollenGlobs</th>
+                    <th>Nectar</th>
+                    <th>Advisement</th>
+                    <th>Edit Advisement</th>
+                </tr>
+                <% @worker_bee.all_information_on_bee.each_with_index do |data, idx| %>
+                    <tr class="table-information">
+                        <td class="data-columns">Week - <%=idx + 1%></td> 
+                        <td class="data-columns"><%=data.created_at.to_s.split(" ")[0]%></td> 
+                        <td class="data-columns"><%=data.pollen_glob_collected%> p/g</td> 
+                        <td class="data-columns"><%=data.nectar_consumption%> Units</td> 
+                        <td class="data-columns"><%=data.advisement%> Units</td>
+                        <td class="data-columns">Edit</td>
                     </tr>
                 <%end%>
                 <tr>

@@ -13,7 +13,6 @@
         const advisement_logic = JSON.parse(document.getElementById('advisement-logic').innerHTML)
         const bee_id = document.getElementById('worker-bee-id').innerHTML
         const comb_id = document.getElementById('worker-bee-comb-id').innerHTML
-//      [current_bee.id, current_comb.id, nectar_consumption, pollen_gathered, advisement[0], advisement[1]]
         const advisement_div = document.getElementsByClassName("new-advisement")[0]
 
         simulateWeekButton.addEventListener("click", () => {
@@ -38,8 +37,7 @@
                             advisement_accepted: advisement_logic[5]
                         }
                     }
-                })
-                .then(window.location.href = `http://localhost:3000/worker_bees/${bee_id}`)
+                }).then(window.location.href = `http://localhost:3000/worker_bees/${bee_id}`)
             
         })
     });
