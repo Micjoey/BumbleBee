@@ -47,10 +47,10 @@
             <%= render "graph"%>
         </div>
 
-        <div class="table-information">
+        <div class="both-table-information">
         <button id="graph-switch-button">Regular View</button>
         <%= render "graph_switch_logic"%>
-            <table class="table-information-advanced" >
+            <table class="show-table table-information " id="enhanced-view">
                 <tr class="table-titles">
                     <th>Week - #</th>
                     <th>Bee-ID</th>
@@ -62,7 +62,7 @@
                     <th>% Accepted</th>
                 </tr>
                 <% @worker_bee.all_information_on_bee.each_with_index do |data, idx| %>
-                    <tr class="table-information">
+                    <tr class="table-information-columns">
                         <td class="data-columns">Week - <%=idx + 1%></td> 
                         <td class="data-columns"><%=data.bee_id%></td> 
                         <td class="data-columns"><%=data.bee_id%>-C<%=data.comb_id%></td> 
@@ -77,7 +77,7 @@
                 
                 </tr>
             </table>
-            <table class="table-information-regular" >
+            <table class="table-information" id="regular-view">
                 <tr class="table-titles">
                     <th>Week - #</th>
                     <th>Date</th>
@@ -87,7 +87,7 @@
                     <th>Edit Advisement</th>
                 </tr>
                 <% @worker_bee.all_information_on_bee.each_with_index do |data, idx| %>
-                    <tr class="table-information">
+                    <tr class="table-information-columns">
                         <td class="data-columns">Week - <%=idx + 1%></td> 
                         <td class="data-columns"><%=data.created_at.to_s.split(" ")[0]%></td> 
                         <td class="data-columns"><%=data.pollen_glob_collected%> p/g</td> 

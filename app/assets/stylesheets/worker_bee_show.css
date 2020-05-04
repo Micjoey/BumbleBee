@@ -27,14 +27,11 @@ tr:hover {
     background-color: lavender;
 }
 
-.table-information {
+.both-table-information {
     margin: 0;
     padding: 0;
 }
 
-.table-information-advanced {
-    width: inherit;
-}
 
 .included-comb {
     font-weight: bold;
@@ -73,6 +70,11 @@ tr:hover {
 }
 
 
-.table-information-regular {
+.table-information {
     display: none;
+}
+
+.show-table {
+    display: table;
+    width: inherit;
 }

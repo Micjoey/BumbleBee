@@ -1,18 +1,15 @@
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function () {    
         const switchGraphTypeButton = document.getElementById("graph-switch-button")
-        const advancedTable = document.getElementsByClassName("table-information-advanced")[0]
-        const regularTable = document.getElementsByClassName("table-information-regular")[0]
+        const advancedTable = document.getElementById("enhanced-view")
+        const regularTable = document.getElementById("regular-view")
+
         switchGraphTypeButton.addEventListener("click", () => {
-            if (advancedTable.style.display === "none") {
-                advancedTable.style.display = null;
+            advancedTable.classList.toggle("show-table")
+            regularTable.classList.toggle("show-table")
+            switchGraphTypeButton.innerHTML === "Regular View" ? 
+                switchGraphTypeButton.innerHTML = "Enhanced View" :
                 switchGraphTypeButton.innerHTML = "Regular View"
-                regularTable.style.display = "none"
-            } else {
-                advancedTable.style.display = "none";
-                switchGraphTypeButton.innerHTML = "Enhanced View"
-                regularTable.style.display = null
-            }
-        })
+        }) 
     });
 </script>
