@@ -41,5 +41,36 @@ tr:hover {
 }
 
 .new-advisement {
-    display: none;
+    /* display: none; */
+    position: fixed;
+    z-index: 2;
+    bottom: 85px;
+    left: 200px;
+    background-color: rgba(216, 193, 16, 0.947);
+    justify-content: center;
+    width: 500px;
+    height: 250px;
+}
+
+.new-advisement h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.new-advisement input label{
+    display: flex;
+    justify-content: center;
+}
+.radio-buttons label {
+    padding-right:10px;
+    display: flex;
+}
+
+.new-advisement p {
+    text-align: center;
+    
+}
+
+.worker-bee-advisement-radio {
+    display: flex;
 }
