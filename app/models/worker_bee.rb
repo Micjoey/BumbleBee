@@ -34,8 +34,23 @@ class WorkerBee < ApplicationRecord
     def all_information_on_bee
         current_bee = self
         pollen_collection = PollenCollection.where(bee_id: self.id, comb_id: self.comb_id)
-        @pollen_array = pollen_collection.to_a.map{|p| p}
-        return @pollen_array
+        all_information = pollen_collection.to_a.map{|p| p}
+        all_information
+    end
+
+    def advisement_accepted
+        count_of_yes = 0.0000
+        count_of_no_na = 0.0000
+        accepted_percent = {}
+        self.all_information_on_bee.each_with_index do |data, idx|
+            if data.advisement_accepted == "Yes"
+                count_of_yes += 1
+            else
+                count_of_no_na += 1
+            end
+            accepted_percent[idx] = (count_of_yes/(count_of_no_na + count_of_yes)) * 100
+        end
+        accepted_percent
     end
 
     def pollen_collected

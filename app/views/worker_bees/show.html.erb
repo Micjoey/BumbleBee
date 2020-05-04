@@ -58,7 +58,7 @@
                 <th>Advisement</th>
                 <th>% Accepted</th>
             </tr>
-            <% @worker_bee.all_information_on_bee.each do |data, idx| %>
+            <% @worker_bee.all_information_on_bee.each_with_index do |data, idx| %>
                 <tr>
                     <td class="data-columns"><%=data.bee_id%></td> 
                     <td class="data-columns"><%=data.bee_id%>-C<%=data.comb_id%></td> 
@@ -66,7 +66,7 @@
                     <td class="data-columns"><%=data.pollen_glob_collected%> p/g</td> 
                     <td class="data-columns"><%=data.nectar_consumption%> Units</td> 
                     <td class="data-columns"><%=@worker_bee.nectar%> Units</td>
-                    <td class="data-columns"><%= rand(0..100)%>%</td>
+                    <td class="data-columns"><%= @worker_bee.advisement_accepted[idx].round(2)%>%</td>
                 </tr>
             <%end%>
             <tr>
