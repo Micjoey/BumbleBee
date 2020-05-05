@@ -7,30 +7,22 @@
     <title>Document</title>
 </head>
 <body>
-    <header>Welcome to the Bee Population!</header>
-
-    <div class="information">
-        <div class="average-bee-information"> 
-            <p>The Average Bee Stats:</p>
-            <p class="average-information-line">A Bee on average will collect <%= @worker_bee_averages%> (p/g)</p>
-        </div>
-        <div class="all-bees">
-            <h1>Please Select one of the bees to see their information.</h1>
-            <div class="list-of-bees">
-             
-                <div class="grid-list-of-bees">
-                    <% @worker_bees.sort{|a,b| a.id <=> b.id}.each do |bee|%>
-                        <div class="individual-bee-name-link">
-                            <div class="individual-bee-link">
-                                <a href=worker_bees/<%=bee.id%> class="individual-bee-info-link">
-                                    <div>Name: <%= bee.bee_name %></div>
-                                    <div>Id: <%= bee.id%></div>
-                                    <div>Current Comb: <%= bee.comb_id%></div>
-                                </a>
-                            </div>
-                        </div>
-                    <%end%>
-                </div>
+    <div class="background-color">
+        <header>Welcome to the Bee Population!</header>
+        <div class="information">
+            <div class="all-bees">
+                <h1>Please select one of the bees to see their information.</h1>
+                    <div class="grid-list-of-bees">
+                        <% @worker_bees.sort{|a,b| a.id <=> b.id}.each do |bee|%>
+                                <div class="individual-bee-link">
+                                    <a href=worker_bees/<%=bee.id%> class="individual-bee-info-link">
+                                        <div>Name: <%= bee.bee_name %></div>
+                                        <div>Id: <%= bee.id%></div>
+                                        <div>Current Comb: <%= bee.comb_id%></div>
+                                    </a>
+                                </div>
+                        <%end%>
+                    </div>
             </div>
         </div>
     </div>

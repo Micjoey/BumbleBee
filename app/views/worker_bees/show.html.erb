@@ -19,6 +19,9 @@
             </button>
         </div>
         <div class="general-bee">
+            <div>
+                
+            </div>
             <div class= "bee-info">
                 <p>Showing a bee named - <%= @worker_bee.bee_name%></p>
                 <p>Bee Id - <%= @worker_bee.id%></p>
@@ -31,15 +34,12 @@
                 <%else%>
                     <p>Supervisor of the following combs - <%= @worker_bee.is_supervisor?[1] %></p>
                 <%end%>
-            </div>
-            <div>
-                    
+                <p>Comb's sweet spot - <%=@worker_bee.target_pollen%> p/g</p> 
+                <p><%= render "change_comp", worker_bee: @worker_bee, comb_array: (1..20).to_a%></p>
             </div>
             <div class= "comb-info">
-                <p>Comb's sweet spot - <%=@worker_bee.target_pollen%> p/g</p> 
             </div>
             <div class="change-bee-comb">
-                <p><%= render "change_comp", worker_bee: @worker_bee, comb_array: (1..20).to_a%></p>
             </div>
             <div>
                         

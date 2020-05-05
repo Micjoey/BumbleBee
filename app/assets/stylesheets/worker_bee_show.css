@@ -1,8 +1,12 @@
 
 .bee-info {
-    /* display: flex; */
+    background-color: #c2823c;
 }
 
+.bee-info label {
+    color: white;
+    padding: 5px;
+}
 
 table {
     border-collapse: collapse;
@@ -22,10 +26,16 @@ th, td {
     padding: 15px
 }
 
-tr:nth-child(even) {background-color: #f2f2f2;}
+tr:nth-child(even) {background-color: #d69249;}
+tr:nth-child(odd) {background-color: #e5b256;}
 
 tr:not(:first-child):hover {
-    background-color: lavender;
+    background-color: rgb(140, 140, 140);
+    color: white;
+}
+
+tr:nth-child(1) {
+    background-color: rgba(196, 194, 194, 0.701);
 }
 
 
@@ -45,7 +55,7 @@ tr:not(:first-child):hover {
     z-index: 2;
     bottom: 85px;
     left: 200px;
-    background-color: rgba(216, 193, 16, 0.947);
+    background-color: #dfd45e;
     justify-content: center;
     width: 500px;
     height: 250px;
@@ -102,10 +112,12 @@ tr:not(:first-child):hover {
 
 .bee-info p {
     padding: 5px;
+    color: white;
 }
 
 .comb-info p {
     padding: 5px;
+    color: white;
 }
 
 .change-bee-comb{
@@ -113,7 +125,12 @@ tr:not(:first-child):hover {
 }
 .change-bee-comb p {
     padding: 5px;
+    color: white;
 }
+.change-bee-comb label {
+    color: white;
+}
+
 
 .index-bee-button img {
     height: 15px;
