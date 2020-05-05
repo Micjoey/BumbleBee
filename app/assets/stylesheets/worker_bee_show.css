@@ -17,6 +17,16 @@ table {
     overflow: scroll;
 }
 
+.simulate-week {
+    justify-content: center;
+    display: flex;
+}
+
+.graph-switch-div {
+    display: flex;
+    justify-content: center;
+}
+
 table, th, td {
     border: 1px solid black
 
