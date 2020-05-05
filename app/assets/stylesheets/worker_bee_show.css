@@ -1,6 +1,7 @@
 
 .bee-info {
     background-color: #c2823c;
+    border: 1px solid black;
 }
 
 .bee-info label {
@@ -52,6 +53,7 @@ tr:nth-child(1) {
 .both-table-information {
     margin: 0;
     padding: 0;
+    width: 95%;
 }
 
 
