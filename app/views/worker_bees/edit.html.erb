@@ -1,0 +1,14 @@
+<script>
+    if (lastAdvisement[0] !== workerBee.nectar && lastAdvisement[1] === 'Yes') {
+        $.ajax({
+                url: `/worker_bees/${bee_id}`,
+                method: 'PATCH',
+                data: {
+                        worker_bee: {
+                        nectar: lastAdvisement[0]
+                        }
+                    }
+            })
+    }
+
+<script>

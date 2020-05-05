@@ -89,17 +89,14 @@ module AdvisementLogic
                     advisement = ((1-(pollen_average/current_comb.sweet_spot)) * 20000).ceil
                 elsif (nectar_average < current_bee_nectar)
                     advisement = current_bee_nectar
-
                 end
             end
-        else
-            advisement_accepted = "n/a"
         end
         if !advisement && !!current_bee
             advisement = AdvisementLogic.last_pollen_collection(id, current_comb)
         end
         
-        advisement_accepted != nil ? nil : advisement_accepted = "n/a"
+        advisement_accepted = "n/a"
         [advisement, advisement_accepted, all_pollen.length]
     end
 

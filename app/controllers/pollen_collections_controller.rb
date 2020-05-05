@@ -7,11 +7,11 @@ class PollenCollectionsController < ApplicationController
         else
             render json: @pollen_collection.errors.full_messages, status: 406
         end
+        if @pollen_collection.advisement_accepted == 'Yes'
+            @worker_bee.update(nectar: @pollen_collection.advisement)
+            redirect_to worker_bees_url(@worker_bee.id)
+        end
     end
-
-    # def show
-    #     @pollen_collection = @pollen_collection.find(params[:bee_id])
-    # end
     
 
     def destroy

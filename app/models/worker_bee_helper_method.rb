@@ -27,15 +27,15 @@ module WorkerBeeHelperMethod
 
     def advisement_accepted
         count_of_yes = 0.0000
-        count_of_no_na = 0.0000
+        count_of_no = 0.0000
         accepted_percent = {}
         self.all_information_on_bee.each_with_index do |data, idx|
             if data.advisement_accepted == "Yes"
                 count_of_yes += 1
-            else
-                count_of_no_na += 1
+            elsif data.advisement_accepted == "No"
+                count_of_no += 1
             end
-            accepted_percent[idx] = (count_of_yes/(count_of_no_na + count_of_yes)) * 100
+            accepted_percent[idx] = (count_of_yes/(count_of_no + count_of_yes)) * 100
         end
         accepted_percent
     end

@@ -77,9 +77,13 @@
                         <td class="data-columns"><%=data.created_at.to_s.split(" ")[0]%></td> 
                         <td class="data-columns"><%=data.pollen_glob_collected%> p/g</td> 
                         <td class="data-columns"><%=data.nectar_consumption%> Units</td> 
-                        <td class="data-columns"><%=data.advisement%> Units</td>
-                        <td class="data-columns"><%= @worker_bee.advisement_accepted[idx].round(2)%>%</td>
-                    </tr>
+                            <td class="data-columns"><%=data.advisement%> Units</td>
+                        <%if !data.advisement_accepted[idx]%>
+                            <td class="data-columns"><%= @worker_bee.advisement_accepted[idx].round(2)%>%</td>
+                        <%else %>
+                            <td class="data-columns">N/A</td>
+                        <%end%>
+                    </tr>   
                 <%end%>
                 <tr>
                 
