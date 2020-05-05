@@ -1,26 +1,77 @@
 
 .show-bee-buttons {
     margin: 1em;
+
+    .index-bee-button {
+        display: flex;
+        padding: 2px;
+        div {
+            padding: 2px;
+        }
+        div:hover {
+            font-weight: bold;
+        }
+        .reverse-bee {
+
+        }
+    }
+
 }
 
 .general-bee {
+    display: flex;
     margin: 1em;
+    .random-bee-image {
+        height: 300px;
+        width: 350px;
+        object-fit: cover;
+    }
+
+    p:first-child {
+        font-size: 2em;
+        text-decoration: underline;
+        padding: 10px 5px;
+        color: white;
+    }
+
+    .bee-info {
+        background-color: #c2823c;
+        border: 1px solid black;
+        width: 100%;
+            label {
+                color: white;
+                padding: 5px;
+            }
+
+            p:not(:first-child) {
+                font-size: 1em;
+                padding: 5px;
+                color: white;
+            }
+    }
+
 }
 
 .new-advisement {
-    display: none;
+    // display: none;
     position: fixed;
     z-index: 2;
-    bottom: 85px;
-    left: 200px;
+    bottom: 25%;
+    left: 25%;
     background-color: #dfd45e;
     justify-content: center;
     width: 500px;
-    height: 250px;
+    height: 130px;
+    border:6px red ridge;
+
+    .first-pop-up-div {
+        height: 100%;
 
         h1 {
             display: flex;
             justify-content: center;
+            font-size: 2em;
+            padding: 10px;
         }
 
         input label{
@@ -32,6 +83,22 @@
         p {
             text-align: center;
         }
+
+        div {
+            display: flex;
+            justify-content: center;
+            margin: 10px;
+            label{
+                margin: 0px 5px;
+                text-align: center;
+                margin-right: 10px;
+            }
+            input {
+                margin: 0px;
+            }
+        }
+    }
+       
 }
 
 .both-table-information {
@@ -41,19 +108,7 @@
     margin: 1em;
 }
 
-.bee-info {
-    background-color: #c2823c;
-    border: 1px solid black;
-        label {
-            color: white;
-            padding: 5px;
-        }
 
-        p {
-            padding: 5px;
-            color: white;
-        }
-}
 
 
 table {
@@ -84,7 +139,7 @@ th, td {
     padding: 15px
 }
 
-tr:nth-child(even) {background-color: #d69249;}
+tr:nth-child(even) {background-color: #ee7f09;}
 tr:nth-child(odd) {background-color: #e5b256;}
 
 tr:not(:first-child):hover {
@@ -93,7 +148,8 @@ tr:not(:first-child):hover {
 }
 
 tr:nth-child(1) {
-    background-color: rgba(196, 194, 194, 0.701);
+    // background-color: rgba(196, 194, 194, 0.701);
+    background-color: #dfd45e
 }
 
 

@@ -110,8 +110,8 @@ module AdvisementLogic
         current_bee = self
 
         # if the bee exits than the curre_bee_nectar will be assinged to accordingly, otherwise it will be a random number
-        current_bee_nectar = rand(200..20000)
-        current_bee ?  current_bee_nectar = current_bee.nectar : current_bee_nectar = rand(200..20000)
+        # current_bee_nectar = rand(200..20000)
+        !!current_bee ?  current_bee_nectar = current_bee.nectar : current_bee_nectar = rand(200..20000)
             
 
         # on_vacay determines if the bee took a vacation or not

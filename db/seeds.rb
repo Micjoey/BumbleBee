@@ -18,7 +18,7 @@ ActiveRecord::Base.transaction do
     include Faker
 
     
-    20.times do 
+    30.times do 
         currentComb = Comb.create(
             # total_nectar_volume: rand(0..10).ceil,
             sweet_spot: rand(10..15).ceil
@@ -32,10 +32,10 @@ ActiveRecord::Base.transaction do
     
     end
     x = 1
-    until x == 20 do
+    until x == 30 do
         newBee = SupervisorBee.new(
-                bee_id: rand(1..20).ceil,
-                comb_id: rand(1..20).floor
+                bee_id: rand(1..30).ceil,
+                comb_id: rand(1..30).floor
             )
         if (newBee.bee_id != newBee.comb_id && newBee.save )
             x += 1 
@@ -46,10 +46,10 @@ ActiveRecord::Base.transaction do
     
     i = 1
     5000.times do
-        if (i == 21)
+        if (i == 30)
             i = 1
         end
-            id = rand(1..20).floor
+            id = rand(1..30).floor
             current_comb = Comb.find_by(id: id)
             current_bee = WorkerBee.find_by(id: i)
 
@@ -165,7 +165,7 @@ ActiveRecord::Base.transaction do
         comb_id = current_bee.comb_id
         hasnt_collected = PollenCollection.where(bee_id: x, comb_id: comb_id).length == 0
         if (hasnt_collected)
-            comb_id = rand(1..20)
+            comb_id = rand(1..30)
             current_bee.update(comb_id: comb_id)
         else
             x += 1

@@ -15,12 +15,12 @@
                 class= "index-bee-button"
                 onclick="window.location.href = 'http://localhost:3000/worker_bees'"
                 >
-                <%= image_tag('bee.png')%> Go Back to all Bees <%= image_tag('bee.png')%>
+                <%= image_tag('bee.png')%><div> Go Back to all Bees </div><%= image_tag('bee.png', :class=> "reverse-bee")%>
             </button>
         </div>
         <div class="general-bee">
-            <div>
-                
+            <div class="random-bee-image">
+                <%= image_tag("bee-"+rand(1..11).to_s, :class => "random-bee-image")%>
             </div>
             <div class= "bee-info">
                 <p>Showing a bee named - <%= @worker_bee.bee_name%></p>
@@ -36,13 +36,6 @@
                 <%end%>
                 <p>Comb's sweet spot - <%=@worker_bee.target_pollen%> p/g</p> 
                 <p><%= render "change_comp", worker_bee: @worker_bee, comb_array: (1..20).to_a%></p>
-            </div>
-            <div class= "comb-info">
-            </div>
-            <div class="change-bee-comb">
-            </div>
-            <div>
-                        
             </div>
         </div>
         
