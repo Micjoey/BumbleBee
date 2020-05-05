@@ -3,6 +3,7 @@ header {
     justify-content: center;
     padding: 1em;
     color: white;
+    font-size: 2em;
 }
 
 .background-color {
@@ -31,6 +32,7 @@ header {
                 padding: 1em;
                 justify-content: center;
                 color: white;
+                font-size: 18px;
             }
         }
             .list-of-bees{
@@ -42,7 +44,7 @@ header {
                     // position: fixed;
                     // justify-content: center;
                     display: grid;
-                    grid-template-columns: auto auto auto auto;
+                    grid-template-columns: auto auto auto auto auto;
                     padding: 1em;
                     justify-content: center;
                     background-color: #dfd45e;
@@ -50,11 +52,9 @@ header {
                     .individual-bee-name-link {
                         display: block;
                         padding: 1em;
-                        // position: fixed;
                     }
                         .individual-bee-link{
-                            // position: fixed;
-                            width: 100%;
+                            width: 200px;
                             padding: 20px;
                             text-align: left;
                         }
