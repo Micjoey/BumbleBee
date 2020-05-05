@@ -15,12 +15,8 @@
                 class= "index-bee-button"
                 onclick="window.location.href = 'http://localhost:3000/worker_bees'"
                 >
-                Go Back to all Bees 
+                <%= image_tag('bee.png')%> Go Back to all Bees <%= image_tag('bee.png')%>
             </button>
-             <img src="https://github.com/Micjoey/Dosis/blob/master/app/views/worker_bees/bee.png" width="200" height="267" alt="me">   
-            <%= render "simulate_week", worker_bee: @worker_bee, advisement: @worker_bee.advisement_logic %>
-            
-
         </div>
         <div class="general-bee">
             <div class= "bee-info">
@@ -56,10 +52,14 @@
                     advisement: @worker_bee.advisement_logic
                 %>
         </div>
-        <div id="container">
-            <%= render "graph"%>
+        <div class='graph-material'>
+            <div class="simulate-week show-bee-buttons">
+                <%= render "simulate_week", worker_bee: @worker_bee, advisement: @worker_bee.advisement_logic %>
+            </div>
+            <div id="container">
+                <%= render "graph"%>
+            </div>
         </div>
-
         <div class="both-table-information">
         <button id="graph-switch-button">Regular View</button>
         <%= render "table_switch_logic"%>
