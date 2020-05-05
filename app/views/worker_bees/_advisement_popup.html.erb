@@ -5,6 +5,17 @@
         name="advisement-form" 
         method="POST" 
         action="<%= pollen_collections_url%>"
+        onsubmit="if (lastAdvisement[0] !== workerBee.nectar && lastAdvisement[1] === 'Yes') {
+            $.ajax({
+                    url: `/worker_bees/${bee_id}`,
+                    method: 'PATCH',
+                    data: {
+                            worker_bee: {
+                            nectar: lastAdvisement[0]
+                            }
+                        }
+                })
+        }"
         >
         <div class="first-pop-up-div">
                 <h1>Advisement: </h1>
@@ -21,12 +32,16 @@
                         name="pollen_collection[<%=data[0]%>]" 
                         value="<%= data[1]%>">
                 <%end%>
+<script>
 
+
+
+</script>
                 <div>
                         <button 
                                 type="Submit" 
                                 value="Submit" 
-                                onclick="setTimeout(function () { window.location.reload(); }, 10)"
+                                onclick="setTimeout(function () { window.location.reload(); }, 30)"
                                 >Submit
                         </button>
                 </div>

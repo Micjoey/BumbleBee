@@ -1,6 +1,5 @@
 module WorkerBeeHelperMethod
     include AdvisementLogic
-
     def is_supervisor?
         workerbee = self
         supervisor_of = workerbee.supervisors.ids
@@ -71,7 +70,17 @@ module WorkerBeeHelperMethod
         pollen_array = pollen_collection.to_a.map{|p| p.comb_id}.uniq().sort()
     end
 
-    def in_need_of_advisement
+    def last_advisement
+       last_advisement = PollenCollection
+            .where(bee_id: self.id, comb_id: self.comb_id)
+            .map{|a| a.advisement}
+            .last
+
+        last_advisement_acceptance = PollenCollection
+                                        .where(bee_id: self.id, comb_id: self.comb_id)
+                                        .map{|a| a.advisement_accepted}
+                                        .last
+        [last_advisement, last_advisement_acceptance]
     end
 
 

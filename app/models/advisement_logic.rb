@@ -85,11 +85,11 @@ module AdvisementLogic
                 # if the productivity is low than accept advisement
                 if pollen_average < current_comb.sweet_spot && nectar_average < current_bee_nectar
                     # grabs the last advisment number and times it by the suggested increase
-                    advisement = ((1-(pollen_average/current_comb.sweet_spot)) * AdvisementLogic.last_pollen_collection(id, current_comb)).ceil
                     # advisement_accepted = "Yes"
-                else 
-                    advisement_accepted = "No"
-                    advisement = AdvisementLogic.last_pollen_collection(id, current_comb)
+                    advisement = ((1-(pollen_average/current_comb.sweet_spot)) * 20000).ceil
+                elsif (nectar_average < current_bee_nectar)
+                    advisement = current_bee_nectar
+
                 end
             end
         else
@@ -109,7 +109,7 @@ module AdvisementLogic
         current_comb = Comb.find_by(id: self.comb_id)
         current_bee = self
 
-        # if the bee exits than the curre_bee_nectar will be assinged to accordingly, otherwise it will be a random number
+        # if the bee exits than the current_bee_nectar will be assinged to accordingly, otherwise it will be a random number
         # current_bee_nectar = rand(200..20000)
         !!current_bee ?  current_bee_nectar = current_bee.nectar : current_bee_nectar = rand(200..20000)
             

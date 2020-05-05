@@ -1,6 +1,8 @@
 
 <button id="simulate-week">--> Simulate Week <--</button>
 <div id="worker-bee-id" style="display: none"><%= worker_bee.id%></div>        
+<div id="worker-bee" style="display: none"><%= worker_bee%></div>        
+<div id="last-advisement" style="display: none"><%= worker_bee.last_advisement%></div>        
 <div id="worker-bee-comb-id" style="display: none"><%= worker_bee.comb_id%></div>
 <div id="advisement-logic" style="display: none"><%= advisement%></div>
 
@@ -14,9 +16,22 @@
         const bee_id = document.getElementById('worker-bee-id').innerHTML
         const comb_id = document.getElementById('worker-bee-comb-id').innerHTML
         const advisement_div = document.getElementsByClassName("new-advisement")[0]
+        const lastAdvisement = JSON.parse(document.getElementById("last-advisement").innerHTML)
+        const workerBee = document.getElementById("worker-bee").innerHTML
+        // if (lastAdvisement[0] !== workerBee.nectar && lastAdvisement[1] === 'Yes') {
+        //     $.ajax({
+        //             url: `/worker_bees/${bee_id}`,
+        //             method: 'PATCH',
+        //             data: {
+        //                     worker_bee: {
+        //                     nectar: lastAdvisement[0]
+        //                     }
+        //                 }
+        //         })
+        // }
 
         simulateWeekButton.addEventListener("click", () => {
-            // alert(`week - ${advisement_logic[6]+1} and ${(advisement_logic[6]+1) % 3 === 0}`)
+                
             if ((advisement_logic[6]+1) % 3 === 0) {
                 advisement_div.style.display = "block"
             } else {
