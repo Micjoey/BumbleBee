@@ -12,13 +12,13 @@
                 value="<%= comb %>"
                 style="color: red"
                 class="included-comb">
-                Has Collected For - <%= comb %>
+                Collected For - <%= comb %>
                 </option>
             <% else%>
                 <option
                     <%= worker_bee.comb_id == comb ? "selected" : "" %>
                     value="<%= comb %>">
-                    Has Not Collected For - <%= comb %>
+                    Not Collected For - <%= comb %>
                 </option>
             <%end%>
         <% end %>
