@@ -69,6 +69,9 @@ The advisement looks like:
 If you accept the advisement, it will update that bee's nectar tolerance. If you decline, nothing will happen, and the bee will continue on as usual.
 
 ----
+The graph itself looks like: 
+
+![graph](https://github.com/Micjoey/Dosis/blob/d5ea864106322a707ae7459c6d90ca818482a8c1/app/assets/images/graph_and_data.png)
 
 The graph has two view modes (enhanced and regular), which you can flip between using the button.
 
@@ -76,7 +79,7 @@ The graph has two view modes (enhanced and regular), which you can flip between 
 
 The enhanced graph looks as follows: 
 
-![enhanced view](https://github.com/Micjoey/Dosis/blob/d5ea864106322a707ae7459c6d90ca818482a8c1/app/assets/images/graph_and_data.png)
+![enhanced view](https://github.com/Micjoey/Dosis/blob/d5ea864106322a707ae7459c6d90ca818482a8c1/app/assets/images/graph_and_button.png)
 
 The regular view looks like:
 
