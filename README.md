@@ -88,7 +88,7 @@ The regular view looks like:
 ### Advisement Pop Up Code
 ![advisement popup](https://github.com/Micjoey/Dosis/blob/master/app/assets/images/advisement_code.png)
 
-### 
+
 
 
 
