@@ -35,7 +35,7 @@
                     <p>Supervisor of the following combs - <%= @worker_bee.is_supervisor?[1] %></p>
                 <%end%>
                 <p>Comb's sweet spot - <%=@worker_bee.target_pollen%> p/g</p> 
-                <p><%= render "change_comp", worker_bee: @worker_bee, comb_array: (1..20).to_a%></p>
+                <p><%= render "change_comp", worker_bee: @worker_bee, comb_array: (1..30).to_a%></p>
             </div>
         </div>
         
