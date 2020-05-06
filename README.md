@@ -90,7 +90,7 @@ The regular view looks like:
 ## Cool Code
 ### Advisement Pop Up Code
 
-To allow the form to update the bee instantly when the new week is generated. I used the controller method to check before saving.
+To allow the form to update the bee instantly when the new week is generated. I used the `controller create method` of the `PollenCollection` to also update the bee if it contained the `"Yes"` value.
 
 ![pop up](https://github.com/Micjoey/Dosis/blob/master/app/assets/images/pop_up_logic.png)
 ![Pollen create](https://github.com/Micjoey/Dosis/blob/master/app/assets/images/PollenCreation.png)
