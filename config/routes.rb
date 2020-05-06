@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :supervisor_bees, only: [:create, :destroy]
   # resources :combs, only: [:index, :show, :update]
 
-# root 'worker_bees#index'
+
+  root 'worker_bees#index'
 end
