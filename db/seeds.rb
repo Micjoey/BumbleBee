@@ -144,11 +144,7 @@ ActiveRecord::Base.transaction do
             if !advisement && !!current_bee
                 advisement = current_bee.nectar
             end
-            # if (i % 3 == 0)
-            #     advisement_accepted = ["Yes", "No"].sample
-            # else
-            #     advisement_accepted = "n/a"
-            # end
+
             PollenCollection.create(
                 bee_id: i,
                 comb_id: id,
@@ -160,7 +156,7 @@ ActiveRecord::Base.transaction do
         i += 1
     end
     x = 1
-    until x == 20 do 
+    until x == 30 do 
         current_bee = WorkerBee.find_by(id: x)
         comb_id = current_bee.comb_id
         hasnt_collected = PollenCollection.where(bee_id: x, comb_id: comb_id).length == 0
