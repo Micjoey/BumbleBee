@@ -103,6 +103,8 @@ module AdvisementLogic
             advisement = 200
         elsif advisement == 20000
             advisement = rand(15000..18000)
+        elsif !advisement
+            advisement = PollenCollection.average("pollen_consumption")
         end
         
         advisement_accepted = "n/a"
@@ -122,7 +124,7 @@ module AdvisementLogic
             
 
         # on_vacay determines if the bee took a vacation or not
-        nectar_consumption = on_vacay(current_bee_nectar)
+        nectar_consumption = on_vacay(current_bee_nectar).ceil
 
         # range_variance determines a rang in which the bee will gather pollen
         range_variance = range_variance(nectar_consumption, current_bee_nectar)

@@ -6,6 +6,7 @@ module WorkerBeeHelperMethod
         answer =supervisor_of.include?(workerbee.comb_id)
         [answer, supervisor_of]
     end
+    
     def self.all_pollen_collection(id, comb_id)
         PollenCollection.where(bee_id: id, comb_id: comb_id)
     end
@@ -80,6 +81,10 @@ module WorkerBeeHelperMethod
                                         .where(bee_id: self.id, comb_id: self.comb_id)
                                         .map{|a| a.advisement_accepted}
                                         .last
+        if (!last_advisement || !last_advisement_acceptance) 
+            last_advisement = PollenCollection.average('nectar_consumption')
+            last_advisement_acceptance = 'n/a'
+        end
         [last_advisement, last_advisement_acceptance]
     end
 

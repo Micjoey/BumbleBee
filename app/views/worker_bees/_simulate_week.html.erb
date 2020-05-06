@@ -12,6 +12,7 @@
 <script type='text/javascript'>
     document.addEventListener('DOMContentLoaded', function () {
         const simulateWeekButton = document.getElementById('simulate-week')
+        console.log(document.getElementById('advisement-logic').innerHTML)
         const advisement_logic = JSON.parse(document.getElementById('advisement-logic').innerHTML)
         const bee_id = document.getElementById('worker-bee-id').innerHTML
         const comb_id = document.getElementById('worker-bee-comb-id').innerHTML
