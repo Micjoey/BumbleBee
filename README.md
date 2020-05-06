@@ -89,8 +89,6 @@ The regular view looks like:
 
 ## Cool Code
 ### Advisement Pop Up Code
-![advisement popup](https://github.com/Micjoey/Dosis/blob/master/app/assets/images/advisement_code.png)
-
 
 To allow the form to update the bee instantly when the new week is generated. I used the controller method to check before saving.
 
