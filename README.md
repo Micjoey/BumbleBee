@@ -1,7 +1,7 @@
 # Welcome to the Dosis Coding Challenge
 ------------------------
 ## Instructions:
-  ###Setup
+  ### Setup
   Please follow these steps to get setup: 
   1) `rails bundle install`
   2)  `rails db:reset` or `rails db:drop db:create db:migrate db:seed`
@@ -89,6 +89,20 @@ The regular view looks like:
 ![advisement popup](https://github.com/Micjoey/Dosis/blob/master/app/assets/images/advisement_code.png)
 
 
+To allow the form to update the bee instantly when the new week is generated I used the controller method to check before saving.
+
+![pop up](https://github.com/Micjoey/Dosis/blob/master/app/assets/images/pop_up_logic.png)
+![Pollen create](https://github.com/Micjoey/Dosis/blob/master/app/assets/images/PollenCreation.png)
 
 
+-----
 
+To Keep code clean and DRY I used partials and modules.
+![partial](https://github.com/Micjoey/Dosis/blob/master/app/assets/images/partial.png)
+![module one](https://github.com/Micjoey/Dosis/blob/master/app/assets/images/module_one.png)
+![module two](https://github.com/Micjoey/Dosis/blob/master/app/assets/images/module_two.png)
+
+By importing the module into the other module, I was able to include both modules into
+the main class module.
+
+Advisement Module --> Worker Bee Helper Module --> Worker Bee Class
