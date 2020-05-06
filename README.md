@@ -11,7 +11,7 @@
  
   
  -----------------------
- **Upon completing above**
+
  ## Welcome to the first page - The Bee Hive!
  ### It should look something like:
  ![Index Page](https://github.com/Micjoey/Dosis/blob/master/app/assets/images/index_page.jpg)
