@@ -51,6 +51,7 @@ To simulate the week I somewhat differed from the README, and that is my apologi
 When you press the simulate week button it will:
 1) first identify which bee and comb it is working with. 
 2) Determine the `nectar_consumption`
+<br>
 `def on_vacay(current_bee_nectar)`
   `on_vacay = rand(1..100) <= 10`
   `nectar_consumption = 0`
@@ -61,6 +62,7 @@ When you press the simulate week button it will:
   ` end`
   `nectar_consumption = nectar_consumption || 0`
 `end`
+<br>
 3) Create a range_variance dependent if the bee has too much nectar consumed that week or not. To condense the code, the main lines are:
 If a bee has too much nectar (drunk) it will could potentially do better but most likely will do poorly
 `range_variance = rand(-15..15) /100.00` 
