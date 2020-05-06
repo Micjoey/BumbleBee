@@ -12,27 +12,28 @@ module AdvisementLogic
         nectar_consumption = 0
         if (!on_vacay) 
             until nectar_consumption >= 200 do
-            nectar_consumption = (((current_bee_nectar/20000.00) + (rand(-20..20) /100.00) * 20000)).abs
+            nectar_consumption = (((current_bee_nectar/20000.00) + (rand(-10..40) /100.00) * 20000)).abs
             end
         end
         nectar_consumption = nectar_consumption || 0
     end
 
     def range_variance(nectar_consumption, current_bee_nectar)
+        range_variance = 0
         if (nectar_consumption > current_bee_nectar)
             # if a bee has too much nectar (drunk) it will could potentially do better but
             # most likely will do poorly
-            range_variance = rand(-25..5) /100.00
+            range_variance = rand(-15..15) /100.00
         else
             # if the nectar is less than or equal to the current_bee_nectar 
             # than the bee will have a standard range of obtaining pollen
-            range_variance = rand(-15..15) /100.00
+            range_variance = rand(-5..40) /100.00
         end
-        range_variance = range_variance || 0
+        range_variance
     end
 
-    def pollen_gathered(current_bee_nectar, range_variance)
-        pollen_gathered = (((current_bee_nectar/20000.00) + range_variance)*17.9).abs.round(1)
+    def pollen_gathered(nectar_consumption, range_variance)
+        pollen_gathered = (((nectar_consumption/20000.00) + range_variance)*17.9).abs.round(1)
         # to make sure pollen is always gathered between 5 and 17.9 I made 
         # an if statement to catch outliers
         if (pollen_gathered > 17.9) 
@@ -83,17 +84,25 @@ module AdvisementLogic
                     
 
                 # if the productivity is low than accept advisement
-                if pollen_average < current_comb.sweet_spot && nectar_average < current_bee_nectar
+                if pollen_average < current_comb.sweet_spot && nectar_average <= current_bee_nectar
                     # grabs the last advisment number and times it by the suggested increase
                     # advisement_accepted = "Yes"
-                    advisement = ((1-(pollen_average/current_comb.sweet_spot)) * 20000).ceil
-                elsif (nectar_average < current_bee_nectar)
+                    advisement = ((1-(current_comb.sweet_spot/20000).ceil) * 20000).ceil
+                elsif (nectar_average > current_bee_nectar)
+                    advisement = ((1-(current_comb.sweet_spot/20000).ceil) * 20000).ceil
+                else 
                     advisement = current_bee_nectar
                 end
             end
         end
         if !advisement && !!current_bee
             advisement = AdvisementLogic.last_pollen_collection(id, current_comb)
+        end
+
+        if advisement < 200 
+            advisement = 200
+        elsif advisement == 20000
+            advisement = rand(15000..18000)
         end
         
         advisement_accepted = "n/a"
@@ -108,7 +117,8 @@ module AdvisementLogic
 
         # if the bee exits than the current_bee_nectar will be assinged to accordingly, otherwise it will be a random number
         # current_bee_nectar = rand(200..20000)
-        !!current_bee ?  current_bee_nectar = current_bee.nectar : current_bee_nectar = rand(200..20000)
+        current_bee_nectar = current_bee.nectar
+        # !!current_bee ?  current_bee_nectar = current_bee.nectar : current_bee_nectar = rand(200..20000)
             
 
         # on_vacay determines if the bee took a vacation or not
@@ -120,7 +130,7 @@ module AdvisementLogic
         # since pollen and nectar have a correlation, used a percentage
         # to calculate the amount of nectar gathered each time
         # including the variance
-        pollen_gathered = pollen_gathered(current_bee_nectar, range_variance)
+        pollen_gathered = pollen_gathered(nectar_consumption, range_variance)
        
         
         # every three weeks there is an advisement
