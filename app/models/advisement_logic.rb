@@ -98,8 +98,8 @@ module AdvisementLogic
         if !advisement && !!current_bee
             advisement = AdvisementLogic.last_pollen_collection(id, current_comb)
         end
-
-        if advisement < 200 
+        
+        if !!advisement && advisement < 200 
             advisement = 200
         elsif advisement == 20000
             advisement = rand(15000..18000)
