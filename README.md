@@ -20,7 +20,7 @@
  ![Color Palette](https://github.com/Micjoey/Dosis/blob/d5ea864106322a707ae7459c6d90ca818482a8c1/app/assets/images/color_palette.png)
  ----------
  ### Code:
- ![Index Code](https://github.com/Micjoey/Dosis/blob/master/app/assets/images/Screen Shot 2020-05-05 at 6.37.39 PM.png)
+ ![Index Code](https://github.com/Micjoey/Dosis/blob/master/app/assets/images/index_code.png)
  ------
  From this page you will be able to see all the bee's that are part of hive.
  You'll also be able to select the bee that you wish to view.
@@ -29,7 +29,7 @@
 
  -------------
  ###Bee Page:
-![Show Page](https://github.com/Micjoey/Dosis/blob/master/app/assets/images/Screen Shot 2020-05-05 at 6.42.30 PM.png)
+![Show Page](https://github.com/Micjoey/Dosis/blob/master/app/assets/images/show_bee_page.png)
 
 In the top left of the page you will find a standard go back button.
 
