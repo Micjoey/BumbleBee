@@ -50,7 +50,9 @@
                 <%= render "simulate_week", worker_bee: @worker_bee, advisement: @worker_bee.advisement_logic %>
             </div>
             <div id="container">
-                <%= render "graph"%>
+                <%= render "graph", 
+                worker_bee: @worker_bee
+                %>
             </div>
         </div>
         <div class="both-table-information">
