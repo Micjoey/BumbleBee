@@ -4,8 +4,8 @@ class CreatePollenCollections < ActiveRecord::Migration[5.1]
       t.integer "bee_id", null: false
       t.integer "comb_id", null: false
       t.integer "nectar_consumption", null: false
-      t.integer "pollen_glob_collected",
-      t.integer "advisement",
+      t.integer "pollen_glob_collected"
+      t.integer "advisement"
       t.string "advisement_accepted", default: "n/a"
       t.timestamps
     end
