@@ -1,10 +1,10 @@
 
 <button id="simulate-week">--> Simulate Week <--</button>
-<div id="worker-bee-id" style="display: none"><%= worker_bee.id%></div>        
-<div id="worker-bee" style="display: none"><%= worker_bee%></div>        
-<div id="last-advisement" style="display: none"><%= worker_bee.last_advisement%></div>        
-<div id="worker-bee-comb-id" style="display: none"><%= worker_bee.comb_id%></div>
-<div id="advisement-logic" style="display: none"><%= advisement%></div>
+<div id="worker-bee-id" style="display: none"><%= @worker_bee.id%></div>        
+<div id="worker-bee" style="display: none"><%= @worker_bee%></div>        
+<div id="last-advisement" style="display: none"><%= @worker_bee.last_advisement%></div>        
+<div id="worker-bee-comb-id" style="display: none"><%= @worker_bee.comb_id%></div>
+<div id="advisement-logic" style="display: none"><%= @worker_bee.advisement_logic%></div>
 
 
 
@@ -12,7 +12,6 @@
 <script type='text/javascript'>
     document.addEventListener('DOMContentLoaded', function () {
         const simulateWeekButton = document.getElementById('simulate-week')
-        console.log(document.getElementById('advisement-logic').innerHTML)
         const advisement_logic = JSON.parse(document.getElementById('advisement-logic').innerHTML)
         const bee_id = document.getElementById('worker-bee-id').innerHTML
         const comb_id = document.getElementById('worker-bee-comb-id').innerHTML

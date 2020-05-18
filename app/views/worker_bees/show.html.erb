@@ -47,7 +47,10 @@
         </div>
         <div class='graph-material'>
             <div class="simulate-week show-bee-buttons">
-                <%= render "simulate_week", worker_bee: @worker_bee, advisement: @worker_bee.advisement_logic %>
+                <%= render "simulate_week", 
+                    worker_bee: @worker_bee, 
+                    advisement: @worker_bee.advisement_logic 
+                %>
             </div>
             <div id="container">
                 <%= render "graph", 

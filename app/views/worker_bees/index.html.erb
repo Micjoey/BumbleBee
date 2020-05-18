@@ -15,12 +15,12 @@
                     <div class="grid-list-of-bees">
                         <% @worker_bees.sort{|a,b| a.id <=> b.id}.each do |bee|%>
                                 <div class="individual-bee-link">
-                                    <a href=worker_bees/<%=bee.id%> class="individual-bee-info-link">
+                                    <a href=worker_bees/<%=bee.id%> data-turbolinks="false" class="individual-bee-info-link">
                                         <div>Name: <%= bee.bee_name %></div>
                                         <div>Id: <%= bee.id%></div>
                                         <div>Current Comb: <%= bee.comb_id%></div>
                                     </a>
-                                </div>
+                                </div>  
                         <%end%>
                     </div>
             </div>
