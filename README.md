@@ -5,7 +5,6 @@
   Please follow these steps to get setup: 
   1) `bundle`
   2) `rails db:reset` or `rails db:drop db:create db:migrate db:seed`
-  <br>
     2a) if you hit an error run `bin/rails db:environment:set RAILS_ENV=development`
   3) `rails s`
    ..**It might take a moment to seed the data**
