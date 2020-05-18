@@ -1,4 +1,4 @@
-class AllTablesOneMigration < ActiveRecord::Migration[5.2]
+class AllTablesOneMigration < ActiveRecord::Migration[5.1]
   def change
     create_table :worker_bees do |t|
       t.integer "nectar"
