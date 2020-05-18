@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.6'
+ruby '2.5.1'
 
 gem 'autoprefixer-rails', '~> 8.5.0'
 
@@ -12,7 +12,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.12'
 
 gem 'rack-canonical-host'
-gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
+gem 'rails', '~> 5.1.6.2'
 gem 'skylight'
 gem 'sprockets', '>= 3.0.0'
 gem 'sassc'
