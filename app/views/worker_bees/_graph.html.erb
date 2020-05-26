@@ -7,7 +7,7 @@
         const pollen_collected = JSON.parse(document.getElementById('worker-bee-pollen').innerHTML)
         const nectar_used = JSON.parse(document.getElementById('worker-bee-nectar').innerHTML)
         const weeks = new Array(Math.max(pollen_collected.length, nectar_used.length))
-        console.log(pollen_collected, nectar_used, weeks)
+        // console.log(pollen_collected, nectar_used, weeks)
         for(let x = 0; x <weeks.length; x++) {
             weeks[x] = `week-${x+1}`
         }
