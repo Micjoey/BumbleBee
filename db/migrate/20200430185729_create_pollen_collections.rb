@@ -1,4 +1,4 @@
-class CreatePollenCollections < ActiveRecord::Migration[5.1]
+class CreatePollenCollections < ActiveRecord::Migration[5.2]
   def change
     create_table :pollen_collections do |t|
       t.integer "bee_id", null: false
