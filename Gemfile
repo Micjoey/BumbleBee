@@ -9,7 +9,7 @@ gem 'flutie'
 gem 'jquery-rails'
 gem 'normalize-rails', '~> 3.0.0'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 4.3'
 
 gem 'rack-canonical-host'
 gem 'rails', '~> 5.1.6.2'
